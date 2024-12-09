@@ -8,5 +8,4 @@
 </template>
 
 <script setup>
-import home from './pages/index.vue'
 </script>
