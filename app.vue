@@ -1,10 +1,12 @@
 <template>
   <div>
     <NuxtRouteAnnouncer />
-    <home />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>
 
 <script setup>
-import home from './views/home.vue'
+import home from './pages/index.vue'
 </script>
