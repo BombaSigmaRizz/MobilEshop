@@ -1,11 +1,17 @@
 <template>
-  <div>
+  <div class="app">
     <NuxtRouteAnnouncer />
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
+    <NuxtPage />
   </div>
 </template>
 
 <script setup>
 </script>
+
+<style scoped lang="scss">
+.app {
+  background-color: var(--bg1);
+  width: 100%;
+  height: 100vh;
+}
+</style>

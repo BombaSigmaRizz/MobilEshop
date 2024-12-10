@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1>Mobily</h1>
+    <TopBar />
   </div>
 </template>
 
@@ -9,5 +9,4 @@
 </script>
 
 <style scoped lang="scss">
-
 </style>
