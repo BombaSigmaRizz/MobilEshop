@@ -1,3 +1,3 @@
 <template>
-  nedivaj sa ty tlsty neger
+  nedivaj sa ty tlstdsds posd
 </template>
