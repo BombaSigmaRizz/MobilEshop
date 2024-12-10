@@ -4,11 +4,14 @@
   --bg-l: #9197AE;
   --border: #EFF6EE;
   --contrast: rgb(162, 0, 231);
+  --light0: #F02D3A;
 }
 
 * {
   margin: 0;
   padding: 0;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 500;
 }

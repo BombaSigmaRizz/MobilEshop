@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/icon": "1.10.0",
     "nuxt": "^3.14.1592",
     "sass": "^1.82.0",
     "vue": "latest",
