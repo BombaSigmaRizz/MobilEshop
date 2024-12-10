@@ -1,6 +1,13 @@
 <template>
   <div class="topbar">
+    <div class="left">
+      <div class="logo">img</div>
+    </div>
+    <div class="middle">
+      <div class="link link-home">Home</div>
+    </div>
     <div class="right">
+      <div class="contact">Contact</div>
       <div class="account">Account</div>
       <div class="basket"><Icon name="ph:basket" size="2.5rem"/></div>
     </div>
@@ -15,6 +22,7 @@
 .topbar {
   display: flex;
   position: fixed;
+  justify-content: space-between;
   top: 0;
   left: 0;
   background-color: var(--bg-l);
@@ -30,8 +38,14 @@
     align-items: center;
     justify-content: center;
   }
+  .left {
+    display: flex
+  }
+  .middle {
+    display: flex;
+  }
   .right {
-    margin-left: auto;
+    // margin-left: auto;
     display: flex;
     gap: 1rem;
   }
