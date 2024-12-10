@@ -4,18 +4,23 @@
       <div class="logo">img</div>
     </div>
     <div class="middle">
-      <div class="link link-home">Home</div>
+      <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
     </div>
     <div class="right">
-      <div class="contact">Contact</div>
-      <div class="account">Account</div>
-      <div class="basket"><Icon name="ph:basket" size="2.5rem"/></div>
+      <NuxtLink class="link" :class="{'active': isActive('contact')}" to="/contact">Contact</NuxtLink>
+      <NuxtLink class="link" :class="{'active': isActive('account')}" to="/account">Account</NuxtLink>
+      <NuxtLink class="link" :class="{'active': isActive('basket')}" to="/basket"><Icon name="ph:basket" size="2.5rem"/></NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+const route = useRoute()
 
+function isActive(routeName: string) {
+  console.log(routeName, route.name)
+  return routeName === route.name ? true : false
+}
 </script>
 
 <style scoped lang="scss">
@@ -25,12 +30,12 @@
   justify-content: space-between;
   top: 0;
   left: 0;
-  background-color: var(--bg-l);
+  background-color: var(--bg1);
   width: 100%;
   height: 3.2rem;
   box-sizing: border-box;
   padding: 0 1rem;
-  outline: 2px solid var(--border);
+  outline: 2px solid #0a21c0;
   align-items: center;
 
   div {
@@ -49,5 +54,15 @@
     display: flex;
     gap: 1rem;
   }
+}
+
+.link {
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.active {
+  border-bottom: 2px solid white;
+  transition: 0.2s;
 }
 </style>
