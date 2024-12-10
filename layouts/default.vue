@@ -11,7 +11,7 @@
 
 <style scoped lang="scss">
 .container_ {
-  background-color: var(--background0);
+  background-color: var(--bg1);
   width: 100%;
   height: 100vh;
 }
