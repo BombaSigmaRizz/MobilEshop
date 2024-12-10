@@ -1,5 +1,4 @@
 <template>
-  <TopBar />
   <div class="container_">
     <slot />
   </div>
