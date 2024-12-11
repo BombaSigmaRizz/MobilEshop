@@ -71,7 +71,7 @@ function randomSlogan() {
   height: 3rem;
   outline: 1px solid white;
   border-radius: 2rem;
-  background: radial-gradient(circle, var(--border-highlight) 50%, transparent 100%);
+  background: radial-gradient(circle, var(--border-light) 50%, transparent 100%);
   background-size: 0 0;
   background-repeat: no-repeat;
   background-position: 50% 50%;
