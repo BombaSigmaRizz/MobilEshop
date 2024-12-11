@@ -3,7 +3,10 @@
     <div class="intro">
       <div class="slogan-shop">
         <span class="slogan">{{ slogan }}</span>
-        <NuxtLink class="shop-btn">Shop Now</NuxtLink>
+        <NuxtLink class="shop-btn">
+          <span>Shop Now</span>
+          <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
+        </NuxtLink>
       </div>
       <div class="brand-new-img"><img src="../assets/fotecky/iphone16proTW.png" width="850vh" height="850vh"></div>
     </div>
@@ -62,24 +65,35 @@ function randomSlogan() {
 .shop-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 0.5rem 1rem;
   width: 12rem;
   height: 3rem;
-  border: none;
+  outline: 1px solid white;
   border-radius: 2rem;
-  background: radial-gradient(circle, var(--border) 50%, transparent 100%);
+  background: radial-gradient(circle, var(--border-highlight) 50%, transparent 100%);
   background-size: 0 0;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   font-size: 1.2rem;
+  border: none;
   cursor: pointer;
   transition: all 0.4s ease;
+  gap: 1rem;
+
+  .icon {
+    transition: all 0.4s ease;
+  }
 
   &:hover {
     // background: var(--border);
     box-shadow: 0px 0px 20px 2px var(--border-highlight);
     background-size: 200% 200%;
+    outline: 1px solid rgba(255, 255, 255, 0);
+  }
+
+  &:hover .icon {
+    translate: 0.5rem;
   }
 }
 
