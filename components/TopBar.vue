@@ -5,6 +5,7 @@
     </div>
     <div class="middle">
       <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
+      <NuxtLink class="link" :class="{'active': isActive('shop')}" to="/shop">Shop</NuxtLink>
     </div>
     <div class="right">
       <NuxtLink class="link" :class="{'active': isActive('contact')}" to="/contact">Contact</NuxtLink>
@@ -38,6 +39,7 @@ function isActive(routeName: string) {
   padding: 0 1rem;
   outline: 2px solid #0a21c0;
   align-items: center;
+  z-index: 1000;
 
   div {
     display: flex;
@@ -49,6 +51,7 @@ function isActive(routeName: string) {
   }
   .middle {
     display: flex;
+    gap: 1rem;
   }
   .right {
     // margin-left: auto;
