@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" ref="home">
     <div class="intro">
       <div class="slogan-shop">
         <span class="slogan">{{ slogan }}</span>
@@ -10,6 +10,21 @@
       </div>
       <div class="brand-new-img"><img src="../assets/fotecky/iphone16proTW.png" width="850vh" height="850vh"></div>
     </div>
+
+    <section class="best-prices">
+      <h2>We Have THE Best Prices</h2>
+      <p>Get the best prices on the latest smartphones and accessories.</p>
+    </section>
+
+    <section class="fast-deliveries">
+      <h2>Lightning Fast Deliveries!</h2>
+      <p>Can't even close the website and the order is delivered.</p>
+    </section>
+
+    <section class="no-competition">
+      <h2>Competition is Non-Existent</h2>
+      <p>We're simply the best at what we do.</p>
+    </section>
   </div>
 </template>
 
@@ -28,12 +43,59 @@ function randomSlogan() {
   const slogan = slogans[Math.floor(Math.random() * slogans.length)]
   return slogan
 }
+
+const home = useTemplateRef('home')
+
+onMounted(() => {
+  window.addEventListener('scroll', () => {
+    if (!home.value) return
+
+    if (window.scrollY > 1200 && window.scrollY < 1800) {
+      home.value.style.background = 'white'
+      home.value.style.color = 'var(--bg0)'
+    } else {
+      home.value.style.background = 'var(--bg0)'
+      home.value.style.color = 'var(--light1)'
+    }
+  })
+
+  window.addEventListener('wheel', e => {
+    e.preventDefault()
+
+    let deltaY = e.deltaY
+
+    if (deltaY < 30 && deltaY > 0) deltaY = 800
+
+    let speed = deltaY * 3
+
+    window.scrollBy(0, speed)
+  }, {passive: false})
+})
 </script>
 
 <style scoped lang="scss">
 .home {
-  width: 100%;
-  overflow-y: hidden;
+  // width: 100%;
+  background: var(--bg0);
+  transition: all 0.4s ease;
+  color: var(--light1);
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.best-prices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.fast-deliveries {
 }
 
 .intro {

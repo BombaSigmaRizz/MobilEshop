@@ -31,6 +31,7 @@ function isActive(routeName: string) {
   top: 0;
   left: 0;
   background-color: var(--bg0);
+  color: var(--light1);
   width: 100%;
   height: 3.2rem;
   box-sizing: border-box;
@@ -59,6 +60,7 @@ function isActive(routeName: string) {
 .link {
   text-decoration: none;
   transition: 0.2s;
+  color: var(--light1);
 }
 
 .active {
