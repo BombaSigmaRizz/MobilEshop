@@ -2,7 +2,8 @@
   --bg0: #141619;
   --bg1: #2c2e3a;
   --border: #0a21c0;
-  --border-highlight: #314dff;
+  --border-light: #2744ff;
+  --border-highlight: #455eff;
   --contrast: rgb(162, 0, 231);
   --light0: #F02D3A;
   --light1: #EFF6EE;
@@ -11,7 +12,7 @@
 * {
   margin: 0;
   padding: 0;
-  color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
+  scroll-behavior: smooth;
 }
