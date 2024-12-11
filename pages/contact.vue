@@ -42,5 +42,10 @@
   text-align: center;
   margin: 3rem;
   padding: 5rem;
+  color: var(--light1);
+}
+
+.container {
+  color: var(--light1);
 }
 </style>
