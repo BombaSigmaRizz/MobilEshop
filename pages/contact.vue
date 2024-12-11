@@ -45,7 +45,11 @@
   color: var(--light1);
 }
 
+<<<<<<< HEAD
 .container{
+=======
+.container {
+>>>>>>> b036c0c5f1534557279801104dac4eb552baa790
   color: var(--light1);
 }
 </style>

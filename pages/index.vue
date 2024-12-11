@@ -1,6 +1,6 @@
 <template>
   <div class="home" ref="home">
-    <div class="intro">
+    <section class="intro">
       <div class="slogan-shop">
         <span class="slogan">{{ slogan }}</span>
         <NuxtLink class="shop-btn">
@@ -9,7 +9,7 @@
         </NuxtLink>
       </div>
       <div class="brand-new-img"><img src="../assets/fotecky/iphone16proTW.png" width="850vh" height="850vh"></div>
-    </div>
+    </section>
 
     <section class="best-prices">
       <h2>We Have THE Best Prices</h2>
@@ -29,6 +29,14 @@
 </template>
 
 <script setup lang="ts">
+
+function pixelToVh(px: number) {
+  return 100 / document.documentElement.clientHeight
+}
+
+function vhToPixel(vh: number) {
+  return vh * document.documentElement.clientHeight
+}
 
 const slogan = randomSlogan()
 
@@ -59,23 +67,41 @@ onMounted(() => {
     }
   })
 
+  let currentSlide = 0
+
+  let lastScroll = 0
+
   window.addEventListener('wheel', e => {
     e.preventDefault()
 
-    let deltaY = e.deltaY
+    if (Date.now() - lastScroll < 500) return
 
-    if (deltaY < 30 && deltaY > 0) deltaY = 800
+    let slide0 = 0
+    let slide1 = 0.945
+    let slide2 = 1.945
+    let slide3 = 2.945
 
-    let speed = deltaY * 3
+    const slidesPos = [slide0, slide1, slide2, slide3]
 
-    window.scrollBy(0, speed)
-  }, {passive: false})
+    console.log(e.deltaY)
+
+    if (e.deltaY > 0) {
+      if (currentSlide < slidesPos.length - 1) currentSlide++
+    } else if (e.deltaY < 0) {
+      if (currentSlide > 0) currentSlide--
+    } else {
+      return
+    }
+
+    window.scrollTo(0, vhToPixel(slidesPos[currentSlide]))
+
+    lastScroll = Date.now()
+  }, { passive: false })
 })
 </script>
 
 <style scoped lang="scss">
 .home {
-  // width: 100%;
   background: var(--bg0);
   transition: all 0.4s ease;
   color: var(--light1);
@@ -85,17 +111,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80vh;
-}
-
-.best-prices {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-}
-
-.fast-deliveries {
+  height: calc(100vh - 3.2rem);
 }
 
 .intro {
@@ -104,7 +120,6 @@ section {
   justify-content: center;
   background: radial-gradient(circle at 50% 50%, var(--border) 0%, rgb(224, 224, 224) 1%);
   animation: intro 2s forwards;
-  height: calc(100vh - 3.2rem);
 }
 
 .slogan-shop {
