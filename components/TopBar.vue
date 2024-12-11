@@ -30,7 +30,7 @@ function isActive(routeName: string) {
   justify-content: space-between;
   top: 0;
   left: 0;
-  background-color: var(--bg1);
+  background-color: var(--bg0);
   width: 100%;
   height: 3.2rem;
   box-sizing: border-box;
