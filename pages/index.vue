@@ -72,8 +72,6 @@ onMounted(() => {
   let lastScroll = 0
 
   window.addEventListener('wheel', e => {
-    e.preventDefault()
-
     if (Date.now() - lastScroll < 500) return
 
     let slide0 = 0
@@ -95,6 +93,13 @@ onMounted(() => {
 
     lastScroll = Date.now()
   }, { passive: false })
+})
+
+onUnmounted(() => {
+
+  console.log('Home unmounted')
+  window.removeEventListener('scroll', () => {})
+  window.removeEventListener('wheel', () => {})
 })
 </script>
 
