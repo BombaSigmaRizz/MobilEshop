@@ -29,11 +29,13 @@ import type { IProduct } from '~/types/types';
   color: var(--light1);
   border-radius: 1rem;
   overflow: hidden;
+  box-sizing: border-box;
+  padding: 1rem;
 }
 
 .product-image {
-  width: 100%;
-  height: 20rem;
+  width: 70%;
+  height: 13rem;
 
   img {
     width: 100%;
