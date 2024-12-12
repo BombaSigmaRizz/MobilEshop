@@ -21,8 +21,25 @@ import type { IProduct } from '~/types/types';
 
 <style scoped lang="scss">
 .product-wrapper {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  flex-direction: column;
   background-color: var(--bg1);
   color: var(--light1);
   border-radius: 1rem;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 20rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // border-radius: 1rem 1rem 0 0;
+  }
 }
 </style>
