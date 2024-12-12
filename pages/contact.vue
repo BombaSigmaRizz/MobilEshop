@@ -4,7 +4,6 @@
       <h1>Contact Us</h1>
       <p>Support in choosing the right product, including additional services<br> and information about the most interesting actions.</p>
     </div>
-
     <div class="contact-container">
       <div class="contact-info">
         <div class="box">
@@ -86,12 +85,14 @@
 }
 
 .container h1{
-  padding-top: 10rem;
+  padding-top: 4rem;
+  font-weight: 600;
 
 }
 
-.container h3{
+.container .contact-container .contact-info .box .text h3{
   padding-left: 1rem;
+  font-weight: 700;
 
 }
 
@@ -131,33 +132,35 @@
 
 .contact-container .contact-info .box .text h3{
   font-weight: 500;
-  color: rgb(255, 0, 0);
+  color: var(--light1)
 }
 .contact-form {
   color: var(--light1);
-  width: 50%;
+  width: 40%;
+  
 }
 
 .contact-form h2{
-  font-size: 30px; 
+  font-size: 2rem; 
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .contact-form .input-box{
   position: relative;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 2.4rem;
+
 }
 
 .contact-form .input-box input,
 .contact-form .input-box textarea{
   width: 100%;
   padding: 5px 0;
-  font-size: 16px;
+  font-size: 1.3rem;
   margin: 10px 0;
   border: none;
-  border-bottom: solid #ff0000;
+  border-bottom: 2px solid var(--border-highlight);
   outline: none;
   resize: none;
   background: transparent;
@@ -185,9 +188,16 @@
 }
 
 .contact-form .input-box input[type='submit']{
-  color: red;
+  color: var(--border);
   border: none;
   font-size: 2rem;
 }
 
+.container > .text p{
+  text-align: center;
+}
+
+.icon{
+  color: var(--border-highlight);
+}
 </style>
