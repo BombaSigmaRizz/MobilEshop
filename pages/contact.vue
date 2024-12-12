@@ -1,57 +1,58 @@
 <template>
-  <section class="contact">
-  <div class="content">
-    <h1>Contact Us</h1>
-    <p>Support in choosing the right product, including additional services<br> and information about the most interesting actions.</p>
-  </div>
   <div class="container">
-    <div class="contactInfo">
-      <div class="box">
-        <Icon class ="icon" name="line-md:map-marker-twotone" size="1.5rem"/>
-          <div class="text">
-            <h3>Adress</h3>
-            <p>4833 Nancy Street,<br>Durham, NC (North Carolina),<br>27703</p>
-          </div>
+    <div class="text">
+      <h1>Contact Us</h1>
+      <p>Support in choosing the right product, including additional services<br> and information about the most interesting actions.</p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <div class="box">
+          <Icon class ="icon" name="line-md:map-marker-twotone" size="1.5rem"/>
+            <div class="text">
+              <h3>Adress</h3>
+              <p>4833 Nancy Street,<br>Durham, NC (North Carolina),<br>27703</p>
+            </div>
         </div>
         <div class="box">
           <Icon class="icon" name="line-md:phone-twotone" size="1.5rem"/>
-            <div class="text">
-              <h3>Phone</h3>
-              <p>919-641-5892</p>
-            </div>
+          <div class="text">
+            <h3>Phone</h3>
+            <p>919-641-5892</p>
           </div>
-          <div class="box">
-            <Icon class="icon" name="line-md:email-alt-twotone" size="1.5rem"/>
-            <div class="text">
-              <h3>Email</h3>
-              <p>MobileEshop@garner.com</p>
-            </div>
+        </div>
+        <div class="box">
+          <Icon class="icon" name="line-md:email-alt-twotone" size="1.5rem"/>
+          <div class="text">
+            <h3>Email</h3>
+            <p>MobileEshop@garner.com</p>
           </div>
         </div>
       </div>
-      </section>  
-    <div class="contactForm">
-      <form>
-        <h2>Send message</h2>
-        <div class="inputBox">
-          <input type="text" name="" required="required">
-          <span>Full Name</span>
-         </div>
-         <div class="inputBox">
-          <input type="text" name="" required="required">
-          <span>Email</span>
-         </div>
-         <div class="inputBox">
-          <textarea required="required"></textarea>
-          <span>Type your message...</span>
-         </div>
-         <div class="inputBox">
-          <input type="submit" name="" value="Send">
-         </div>
-      </form>
+
+      <div class="contact-form">
+        <form>
+          <h2>Send message</h2>
+          <div class="input-box">
+            <input type="text" name="" required>
+            <span>Full Name</span>
+          </div>
+          <div class="input-box">
+            <input type="text" name="" required>
+            <span>Email</span>
+          </div>
+          <div class="input-box">
+            <textarea required></textarea>
+            <span>Type your message...</span>
+          </div>
+          <div class="input-box">
+            <input type="submit" name="" value="Send">
+          </div>
+        </form>
+      </div>
+
     </div>
-
-
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -60,34 +61,32 @@
 
 <style scoped lang="scss">
 
-.contact {
+.container {
   font-size: 23px;
   text-align: center;
-  margin: 3rem;
-  padding: 5rem;
+  padding: 2rem 5rem 5rem 5rem;
   color: var(--light1);
   position: relative;
   min-height: 10vh;
+  height: calc(100vh - 10.2rem);
   display: flex;
   justify-content: center;
   align-items: center;  
   flex-direction: column;
-  background-image: url(assets\fotecky\backG.webp);
+  background-image: url('../assets/fotecky/contact-bg-dark.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-
-  
 }
 
-.contact .content {
+.container .content {
   max-width: 60rem;
   text-align: center;
 }
 
 
-.container {
+.contact-container {
   color: var(--light1);
   width: 100%;
   display: flex;
@@ -97,24 +96,24 @@
   
 }
 
-.container .contactInfo {
+.contact-container .contact-info {
   width: 50%;
   display: flex;
   flex-direction: column;
 }
 
-.container .contactInfo .box{
+.contact-container .contact-info .box{
   position: relative;
   padding: 0.2rem 0;
   display: flex;
 
 }
 
-.container .contactInfo .box .text h3{
+.contact-container .contact-info .box .text h3{
   font-weight: 500;
   color: rgb(255, 0, 0);
 }
-.contactForm {
+.contact-form {
   color: var(--bg0);
   width: 40%;
   padding: 40px;
@@ -122,20 +121,20 @@
 
 }
 
-.contactForm h2{
+.contact-form h2{
   font-size: 30px; 
   color: #333;
   font-weight: 500;
 }
 
-.contactForm .inputBox{
+.contact-form .input-box{
   position: relative;
   width: 100%;
   margin-top: 10px;
 }
 
-.contactForm .inputBox input,
-.contactForm .inputBox textarea{
+.contact-form .input-box input,
+.contact-form .input-box textarea{
   width: 100%;
   padding: 5px 0;
   font-size: 16px;
@@ -146,7 +145,7 @@
   resize: none;
 }
 
-.contactForm .inputBox span{
+.contact-form .input-box span{
   position: absolute;
   left: 0;
   padding: 5px 0;
@@ -157,10 +156,10 @@
   color:#666;
 }
 
-.contactForm .inputBox input:focus ~ span,
-.contactForm .inputBox input:valid ~ span,
-.contactForm .inputBox textarea:focus ~ span,
-.contactForm .inputBox textarea:valid ~ span{
+.contact-form .input-box input:focus ~ span,
+.contact-form .input-box input:valid ~ span,
+.contact-form .input-box textarea:focus ~ span,
+.contact-form .input-box textarea:valid ~ span{
   color: #e91e63;
   font-size: 12px;
   transform: translateY(-20px);
