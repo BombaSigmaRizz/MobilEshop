@@ -70,7 +70,7 @@
   min-height: 10vh;
   height: calc(100vh - 10.2rem);
   display: flex;
-  justify-content: center;
+  // justify-content: center;
   align-items: center;  
   flex-direction: column;
   background-image: url('../assets/fotecky/contact-bg-dark.jpg');
