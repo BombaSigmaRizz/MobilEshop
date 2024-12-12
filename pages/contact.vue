@@ -130,10 +130,6 @@
 
 }
 
-.contact-container .contact-info .box .text h3{
-  font-weight: 500;
-  color: var(--light1)
-}
 .contact-form {
   color: var(--light1);
   width: 40%;
