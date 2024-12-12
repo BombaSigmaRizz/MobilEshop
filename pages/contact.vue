@@ -32,7 +32,7 @@
 
       <div class="contact-form">
         <form>
-          <h2>Send message</h2>
+          <h2>Send us message</h2>
           <div class="input-box">
             <input type="text" name="" required>
             <span>Full Name</span>
@@ -64,13 +64,13 @@
 .container {
   font-size: 23px;
   text-align: center;
-  padding: 2rem 5rem 5rem 5rem;
+  padding: 0rem 5rem 5rem 5rem;
   color: var(--light1);
   position: relative;
   min-height: 10vh;
-  height: calc(100vh - 10.2rem);
+  height: calc(100vh - 8.2rem);
   display: flex;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;  
   flex-direction: column;
   background-image: url('../assets/fotecky/contact-bg-dark.jpg');
@@ -80,14 +80,33 @@
   background-attachment: fixed;
 }
 
-.container .content {
-  max-width: 60rem;
+.container .contact-container {
+  max-width: 600rem;
   text-align: center;
 }
 
+.container h1{
+  padding-top: 10rem;
+
+}
+
+.container h3{
+  padding-left: 1rem;
+
+}
+
+.container p{
+  padding: 1rem;
+  text-align: left;
+
+}
+
+.box{
+  text-align: left;
+}
 
 .contact-container {
-  color: var(--light1);
+  color: #ffffff;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -97,9 +116,10 @@
 }
 
 .contact-container .contact-info {
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
+  padding: 0rem 0rem 5rem 0rem;
 }
 
 .contact-container .contact-info .box{
@@ -114,16 +134,13 @@
   color: rgb(255, 0, 0);
 }
 .contact-form {
-  color: var(--bg0);
-  width: 40%;
-  padding: 40px;
-  background: #fff;
-
+  color: var(--light1);
+  width: 50%;
 }
 
 .contact-form h2{
   font-size: 30px; 
-  color: #333;
+  color: #ffffff;
   font-weight: 500;
 }
 
@@ -140,9 +157,11 @@
   font-size: 16px;
   margin: 10px 0;
   border: none;
-  border-bottom: 2px solid #333;
+  border-bottom: solid #ff0000;
   outline: none;
   resize: none;
+  background: transparent;
+  color: #ffffff;
 }
 
 .contact-form .input-box span{
@@ -153,7 +172,7 @@
   margin: 10px 0;
   pointer-events: none;
   transition: 0.5s;
-  color:#666;
+  color:#ffffff;
 }
 
 .contact-form .input-box input:focus ~ span,
@@ -164,4 +183,11 @@
   font-size: 12px;
   transform: translateY(-20px);
 }
+
+.contact-form .input-box input[type='submit']{
+  color: red;
+  border: none;
+  font-size: 2rem;
+}
+
 </style>
