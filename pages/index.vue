@@ -2,7 +2,7 @@
   <div class="home" ref="home">
     <section class="intro">
       <div class="slogan-shop">
-        <span class="slogan">{{ slogan }}</span>
+        <h1 class="slogan">{{ slogan }}</h1>
         <NuxtLink class="shop-btn">
           <span>Shop Now</span>
           <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
@@ -12,17 +12,17 @@
     </section>
 
     <section class="best-prices">
-      <h2>We Have THE Best Prices</h2>
+      <h1>We Have THE Best Prices</h1>
       <p>Get the best prices on the latest smartphones and accessories.</p>
     </section>
 
     <section class="fast-deliveries">
-      <h2>Lightning Fast Deliveries!</h2>
+      <h1>Lightning Fast Deliveries!</h1>
       <p>Can't even close the website and the order is delivered.</p>
     </section>
 
     <section class="no-competition">
-      <h2>Competition is Non-Existent</h2>
+      <h1>Competition is Non-Existent</h1>
       <p>We're simply the best at what we do.</p>
     </section>
   </div>
@@ -83,8 +83,6 @@ onMounted(() => {
 
     const slidesPos = [slide0, slide1, slide2, slide3]
 
-    console.log(e.deltaY)
-
     if (e.deltaY > 0) {
       if (currentSlide < slidesPos.length - 1) currentSlide++
     } else if (e.deltaY < 0) {
@@ -110,13 +108,23 @@ onMounted(() => {
 section {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   height: calc(100vh - 3.2rem);
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    width: 70%;
+    text-align: center;
+  }
 }
 
 .intro {
   display: flex;
   align-items: center;
+  flex-direction: row;
   justify-content: center;
   background: radial-gradient(circle at 50% 50%, var(--border) 0%, rgb(224, 224, 224) 1%);
   animation: intro 2s forwards;
@@ -130,13 +138,6 @@ section {
   color: var(--text);
   transform: translateX(35%);
   gap: 1rem;
-}
-
-.slogan {
-  width: 70%;
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
 }
 
 .shop-btn {

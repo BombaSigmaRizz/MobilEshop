@@ -62,7 +62,7 @@
 <style scoped lang="scss">
 
 .container {
-  font-size: 23px;
+  font-size: 1.5rem;
   text-align: center;
   padding: 2rem 5rem 5rem 5rem;
   color: var(--light1);

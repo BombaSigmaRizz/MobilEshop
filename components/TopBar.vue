@@ -1,7 +1,7 @@
 <template>
   <div class="topbar">
     <div class="left">
-      <div class="logo">img</div>
+      <img src="" alt="Logo">
     </div>
     <div class="middle">
       <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
@@ -19,7 +19,6 @@
 const route = useRoute()
 
 function isActive(routeName: string) {
-  console.log(routeName, route.name)
   return routeName === route.name ? true : false
 }
 </script>
@@ -33,10 +32,10 @@ function isActive(routeName: string) {
   left: 0;
   background-color: var(--bg0);
   color: var(--light1);
-  width: 100%;
+  width: 100vw;
   height: 3.2rem;
   box-sizing: border-box;
-  padding: 0 1rem;
+  padding: 0 2rem;
   outline: 2px solid #0a21c0;
   align-items: center;
   z-index: 1000;
@@ -45,17 +44,19 @@ function isActive(routeName: string) {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex: 1 1 0px;
   }
+
   .left {
-    display: flex
+    justify-content: flex-start;
   }
+
   .middle {
-    display: flex;
     gap: 1rem;
   }
+
   .right {
-    // margin-left: auto;
-    display: flex;
+    justify-content: flex-end;
     gap: 1rem;
   }
 }
