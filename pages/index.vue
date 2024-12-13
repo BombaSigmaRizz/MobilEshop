@@ -3,10 +3,12 @@
     <section class="intro">
       <div class="slogan-shop">
         <h1 class="slogan">{{ slogan }}</h1>
-        <NuxtLink class="shop-btn">
-          <span>Shop Now</span>
-          <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
-        </NuxtLink>
+        <div @mouseover="scrambleWordEffect(shopBtnText!)">
+          <NuxtLink class="shop-btn">
+            <span data-value="Shop Now" ref="shop-btn-text">Shop Now</span>
+            <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
+          </NuxtLink>
+        </div>
       </div>
       <div class="brand-new-img"><img src="../assets/fotecky/iphone16proTW.png" width="850vh" height="850vh"></div>
     </section>
@@ -29,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import { scrambleWordEffect } from '#build/imports';
 
 function pixelToVh(px: number) {
   return 100 / document.documentElement.clientHeight
@@ -53,6 +56,7 @@ function randomSlogan() {
 }
 
 const home = useTemplateRef('home')
+const shopBtnText = useTemplateRef('shop-btn-text')
 
 onMounted(() => {
   window.addEventListener('scroll', () => {
