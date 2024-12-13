@@ -4,7 +4,7 @@
       <img :src="props.desc.image" alt="product.name">
     </div>
     <div class="product-info">
-      <h3>{{ props.desc.name }}</h3>
+      <h2>{{ props.desc.name }}</h2>
       <p>{{ props.desc.description }}</p>
       <p>{{ props.desc.price }}</p>
     </div>
@@ -25,23 +25,47 @@ import type { IProduct } from '~/types/types';
   align-items: center;
   // justify-content: center;
   flex-direction: column;
-  background-color: var(--bg1);
+  // background-color: var(--bg1);
   color: var(--light1);
   border-radius: 1rem;
   overflow: hidden;
   box-sizing: border-box;
   padding: 1rem;
+  gap: 1rem;
+  transition: all 0.4s ease;
+
+  &:hover {
+    outline: 3px solid var(--border);
+    scale: 1.05 1.05;
+  }
 }
 
 .product-image {
-  width: 70%;
-  height: 13rem;
+  width: 90%;
+  height: 17rem;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     // border-radius: 1rem 1rem 0 0;
+  }
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 1rem;
+    font-weight: 400;
   }
 }
 </style>
