@@ -23,25 +23,23 @@ import type { IProduct } from '~/types/types';
 .product-wrapper {
   display: flex;
   align-items: center;
-  // justify-content: center;
   flex-direction: column;
-  // background-color: var(--bg1);
   color: var(--light1);
   border-radius: 1rem;
-  overflow: hidden;
-  box-sizing: border-box;
+  // overflow: hidden;
+  // box-sizing: border-box;
   padding: 1rem;
   gap: 1rem;
   transition: all 0.4s ease;
 
   &:hover {
-    outline: 3px solid var(--border);
+    outline: 3px solid var(--border-light);
     scale: 1.05 1.05;
   }
 }
 
 .product-image {
-  width: 90%;
+  width: 100%;
   height: 17rem;
 
   img {

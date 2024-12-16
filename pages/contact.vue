@@ -61,7 +61,7 @@
 <style scoped lang="scss">
 
 .container {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   text-align: center;
   padding: 0rem 5rem 5rem 5rem;
   color: var(--light1);
@@ -77,11 +77,6 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-}
-
-.container .contact-container {
-  max-width: 600rem;
-  text-align: center;
 }
 
 .container h1{
@@ -113,7 +108,8 @@
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
-  
+  max-width: 70em;
+  text-align: center;
 }
 
 .contact-container .contact-info {
@@ -127,7 +123,6 @@
   position: relative;
   padding: 0.2rem 0;
   display: flex;
-
 }
 
 .contact-form {
@@ -137,7 +132,7 @@
 }
 
 .contact-form h2{
-  font-size: 2rem; 
+  font-size: 2em; 
   color: #ffffff;
   font-weight: 700;
 }
@@ -167,7 +162,7 @@
   position: absolute;
   left: 0;
   padding: 5px 0;
-  font-size: 16px;
+  font-size: 1em;
   margin: 10px 0;
   pointer-events: none;
   transition: 0.5s;
@@ -179,7 +174,7 @@
 .contact-form .input-box textarea:focus ~ span,
 .contact-form .input-box textarea:valid ~ span{
   color: #e91e63;
-  font-size: 12px;
+  font-size: 0.7em;
   transform: translateY(-20px);
 }
 
@@ -196,4 +191,10 @@
 .icon{
   color: var(--border-highlight);
 }
+
+@media only screen and (max-width: 800px){
+    .contact-container {
+      flex-direction: column;
+    }
+  }
 </style>

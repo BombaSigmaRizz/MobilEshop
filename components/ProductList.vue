@@ -109,8 +109,8 @@ onMounted(() => {
 <style scoped lang="scss">
 .product-list-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  grid-auto-rows: 25rem;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  grid-auto-rows: 20rem;
   gap: 1.5rem;
   padding: 2rem;
   background: var(--bg0);
