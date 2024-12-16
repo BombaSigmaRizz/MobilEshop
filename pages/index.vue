@@ -10,7 +10,8 @@
           </NuxtLink>
         </div>
       </div>
-      <img ref="new-img" :onload="fadeImage()" class="brand-new-img" src="../assets/img/iphone16proTW.png" draggable="false" width="4000" height="4000">
+      <div class="exhibition-img"></div>
+      <!-- <img ref="new-img" :onload="fadeImage()" class="brand-new-img" src="../assets/img/iphone16proTW.png" draggable="false" width="4000" height="4000"> -->
     </section>
 
     <section class="best-prices">
@@ -57,22 +58,24 @@ function randomSlogan() {
 
 const home = useTemplateRef('home')
 const shopBtnText = useTemplateRef('shop-btn-text')
-const newImg = useTemplateRef('new-img')
+// const newImg = useTemplateRef('new-img')
 let currentSlide = 0
 let lastScroll = 0
 
-function fadeImage() {
-  if (!newImg.value) return
-  newImg.value.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, fill: 'forwards' })
-}
+// function fadeImage() {
+//   if (!newImg.value) return
+//   newImg.value.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, fill: 'forwards' })
+// }
 
 function themeByScroll() {
   if (!home.value) return
 
   if (window.scrollY > 1200 && window.scrollY < 1800) {
+    console.log('light')
     home.value.style.background = 'white'
     home.value.style.color = 'var(--bg0)'
   } else {
+    console.log('dark')
     home.value.style.background = 'var(--bg0)'
     home.value.style.color = 'var(--light1)'
   }
@@ -108,8 +111,7 @@ onMounted(() => {
 
 <style scoped lang="scss">
 .home {
-  width: 100%;
-  height: 100%;
+  height: fit-content;
   background: var(--bg0);
   transition: all 0.4s ease;
   color: var(--light1);
@@ -147,7 +149,7 @@ section {
   align-items: center;
   justify-content: center;
   color: var(--text);
-  transform: translateX(35%);
+  // transform: translateX(10rem);
   gap: 1rem;
 }
 
@@ -156,16 +158,21 @@ section {
 }
 
 .shop-btn-wrapper {
+  width: 16rem;
+  height: 4rem;
   border-radius: 2rem;
+  z-index: 100;
+  box-sizing: border-box;
 }
 
 .shop-btn {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  box-sizing: border-box;
   padding: 0.5rem 1rem;
-  width: 14rem;
-  height: 3rem;
+  width: 100%;
+  height: 100%;
   outline: 1px solid white;
   border-radius: 2rem;
   background: radial-gradient(circle, var(--border-light) 50%, transparent 100%);
@@ -194,10 +201,12 @@ section {
   }
 }
 
-.brand-new-img {
-  width: clamp(20rem, 100%, 120vh);
-  height: auto;
-  opacity: 0;
+.exhibition-img {
+  width: clamp(22rem, 40%, 100vh);
+  height: 100%;
+  background-image: url('../assets/img/iphone16proTW.png');
+  background-position: 50% 50%;
+  background-size: cover;
 }
 
 @keyframes intro {
