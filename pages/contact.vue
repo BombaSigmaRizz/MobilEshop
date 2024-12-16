@@ -72,32 +72,32 @@
   justify-content: center;
   align-items: center;  
   flex-direction: column;
-  background-image: url('../assets/fotecky/contact-bg-dark.jpg');
+  background-image: url('../assets/img/contact-bg-dark.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
 }
 
-.container h1{
+.container h1 {
   padding-top: 4rem;
   font-weight: 600;
 
 }
 
-.container .contact-container .contact-info .box .text h3{
+.container .contact-container .contact-info .box .text h3 {
   padding-left: 1rem;
   font-weight: 700;
 
 }
 
-.container p{
+.container p {
   padding: 1rem;
   text-align: left;
 
 }
 
-.box{
+.box {
   text-align: left;
 }
 
@@ -119,7 +119,7 @@
   padding: 0rem 0rem 5rem 0rem;
 }
 
-.contact-container .contact-info .box{
+.contact-container .contact-info .box {
   position: relative;
   padding: 0.2rem 0;
   display: flex;
@@ -131,13 +131,13 @@
   
 }
 
-.contact-form h2{
+.contact-form h2 {
   font-size: 2em; 
   color: #ffffff;
   font-weight: 700;
 }
 
-.contact-form .input-box{
+.contact-form .input-box {
   position: relative;
   width: 100%;
   margin-top: 2.4rem;
@@ -145,7 +145,7 @@
 }
 
 .contact-form .input-box input,
-.contact-form .input-box textarea{
+.contact-form .input-box textarea {
   width: 100%;
   padding: 5px 0;
   font-size: 1.3rem;
@@ -158,7 +158,7 @@
   color: #ffffff;
 }
 
-.contact-form .input-box span{
+.contact-form .input-box span {
   position: absolute;
   left: 0;
   padding: 5px 0;
@@ -172,27 +172,27 @@
 .contact-form .input-box input:focus ~ span,
 .contact-form .input-box input:valid ~ span,
 .contact-form .input-box textarea:focus ~ span,
-.contact-form .input-box textarea:valid ~ span{
+.contact-form .input-box textarea:valid ~ span {
   color: #e91e63;
   font-size: 0.7em;
   transform: translateY(-20px);
 }
 
-.contact-form .input-box input[type='submit']{
+.contact-form .input-box input[type='submit'] {
   color: var(--border);
   border: none;
   font-size: 2rem;
 }
 
-.container > .text p{
+.container > .text p {
   text-align: center;
 }
 
-.icon{
+.icon {
   color: var(--border-highlight);
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 800px) {
     .contact-container {
       flex-direction: column;
     }

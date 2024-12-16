@@ -7,7 +7,7 @@ export function scrambleWordEffect(el: HTMLElement) {
   clearInterval(interval);
 
   interval = setInterval(() => {
-    el.innerText = el.innerText.split("").map((letter, index) => {
+    el.innerText = el.innerText.split('').map((letter, index) => {
       if(index < iterations) {
         return el.dataset.value![index];
       }
