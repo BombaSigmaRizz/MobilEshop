@@ -69,13 +69,11 @@ let lastScroll = 0
 
 function themeByScroll() {
   if (!home.value) return
-
-  if (window.scrollY > 1200 && window.scrollY < 1800) {
-    console.log('light')
+  console.log(window.scrollY)
+  if (window.scrollY > window.innerHeight*1.5 && window.scrollY < window.innerHeight*2.5) {
     home.value.style.background = 'white'
     home.value.style.color = 'var(--bg0)'
   } else {
-    console.log('dark')
     home.value.style.background = 'var(--bg0)'
     home.value.style.color = 'var(--light1)'
   }
