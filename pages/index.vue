@@ -3,14 +3,14 @@
     <section class="intro">
       <div class="slogan-shop">
         <h1 class="slogan">{{ slogan }}</h1>
-        <div @mouseover="scrambleWordEffect(shopBtnText!)">
+        <div class="shop-btn-wrapper" @mouseenter="scrambleWordEffect(shopBtnText!)">
           <NuxtLink class="shop-btn">
             <span data-value="Shop Now" ref="shop-btn-text">Shop Now</span>
             <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
           </NuxtLink>
         </div>
       </div>
-      <div class="brand-new-img"><img src="../assets/fotecky/iphone16proTW.png" width="850vh" height="850vh"></div>
+      <img ref="new-img" :onload="fadeImage()" class="brand-new-img" src="../assets/img/iphone16proTW.png" draggable="false" width="4000" height="4000">
     </section>
 
     <section class="best-prices">
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { scrambleWordEffect } from '#build/imports';
+import { useEventListener } from '@vueuse/core';
 
 function pixelToVh(px: number) {
   return 100 / document.documentElement.clientHeight
@@ -57,58 +57,59 @@ function randomSlogan() {
 
 const home = useTemplateRef('home')
 const shopBtnText = useTemplateRef('shop-btn-text')
+const newImg = useTemplateRef('new-img')
+let currentSlide = 0
+let lastScroll = 0
+
+function fadeImage() {
+  if (!newImg.value) return
+  newImg.value.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, fill: 'forwards' })
+}
+
+function themeByScroll() {
+  if (!home.value) return
+
+  if (window.scrollY > 1200 && window.scrollY < 1800) {
+    home.value.style.background = 'white'
+    home.value.style.color = 'var(--bg0)'
+  } else {
+    home.value.style.background = 'var(--bg0)'
+    home.value.style.color = 'var(--light1)'
+  }
+}
+function smoothScrollTo(e: WheelEvent) {
+  if (Date.now() - lastScroll < 500) return
+
+  let slide0 = 0
+  let slide1 = 0.945
+  let slide2 = 1.945
+  let slide3 = 2.945
+
+  const slidesPos = [slide0, slide1, slide2, slide3]
+
+  if (e.deltaY > 0) {
+    if (currentSlide < slidesPos.length - 1) currentSlide++
+  } else if (e.deltaY < 0) {
+    if (currentSlide > 0) currentSlide--
+  } else {
+    return
+  }
+
+  window.scrollTo(0, vhToPixel(slidesPos[currentSlide]))
+
+  lastScroll = Date.now()
+}
 
 onMounted(() => {
-  window.addEventListener('scroll', () => {
-    if (!home.value) return
-
-    if (window.scrollY > 1200 && window.scrollY < 1800) {
-      home.value.style.background = 'white'
-      home.value.style.color = 'var(--bg0)'
-    } else {
-      home.value.style.background = 'var(--bg0)'
-      home.value.style.color = 'var(--light1)'
-    }
-  })
-
-  let currentSlide = 0
-
-  let lastScroll = 0
-
-  window.addEventListener('wheel', e => {
-    if (Date.now() - lastScroll < 500) return
-
-    let slide0 = 0
-    let slide1 = 0.945
-    let slide2 = 1.945
-    let slide3 = 2.945
-
-    const slidesPos = [slide0, slide1, slide2, slide3]
-
-    if (e.deltaY > 0) {
-      if (currentSlide < slidesPos.length - 1) currentSlide++
-    } else if (e.deltaY < 0) {
-      if (currentSlide > 0) currentSlide--
-    } else {
-      return
-    }
-
-    window.scrollTo(0, vhToPixel(slidesPos[currentSlide]))
-
-    lastScroll = Date.now()
-  }, { passive: false })
-})
-
-onUnmounted(() => {
-
-  console.log('Home unmounted')
-  window.removeEventListener('scroll', () => {})
-  window.removeEventListener('wheel', () => {})
+  useEventListener('scroll', themeByScroll)
+  useEventListener('wheel', smoothScrollTo, { passive: false })
 })
 </script>
 
 <style scoped lang="scss">
 .home {
+  width: 100%;
+  height: 100%;
   background: var(--bg0);
   transition: all 0.4s ease;
   color: var(--light1);
@@ -133,10 +134,11 @@ section {
 .intro {
   display: flex;
   align-items: center;
-  flex-direction: row;
   justify-content: center;
+  flex-direction: row;
   background: radial-gradient(circle at 50% 50%, var(--border) 0%, rgb(224, 224, 224) 1%);
   animation: intro 2s forwards;
+  overflow: hidden;
 }
 
 .slogan-shop {
@@ -149,12 +151,20 @@ section {
   gap: 1rem;
 }
 
+.slogan {
+  font-size: 1.8em;
+}
+
+.shop-btn-wrapper {
+  border-radius: 2rem;
+}
+
 .shop-btn {
   display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 0.5rem 1rem;
-  width: 12rem;
+  width: 14rem;
   height: 3rem;
   outline: 1px solid white;
   border-radius: 2rem;
@@ -162,7 +172,7 @@ section {
   background-size: 0 0;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  font-size: 1.2rem;
+  font-size: 1.5em;
   border: none;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -184,6 +194,12 @@ section {
   }
 }
 
+.brand-new-img {
+  width: clamp(20rem, 100%, 120vh);
+  height: auto;
+  opacity: 0;
+}
+
 @keyframes intro {
   0% {
     background-size: 100% 100%;
@@ -192,6 +208,19 @@ section {
   100% {
     background-size: 15000% 15000%;
     background-position: 50% 50%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .intro {
+    flex-direction: column;
+  }
+  .slogan-shop {
+    transform: none;
+    order: 2;
+  }
+  .brand-new-img {
+    order: 1;
   }
 }
 </style>
