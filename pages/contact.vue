@@ -30,7 +30,7 @@
       </div>
 
       <div class="contact-form">
-        <form>
+        <form ref="form">
           <h2>Send us message</h2>
           <div class="input-box">
             <input type="text" name="" required>
@@ -45,7 +45,11 @@
             <span>Type your message...</span>
           </div>
           <div class="input-box">
-            <input type="submit" name="" value="Send">
+            <div class="contact-btn-wrapper" @click="submit()" @mouseenter="scrambleWordEffect(contactBtnText!)">
+              <NuxtLink class="contact-btn">
+                <span data-value="Send" ref="contact-btn-text">Send</span>
+              </NuxtLink>
+            </div>
           </div>
         </form>
       </div>
@@ -55,15 +59,20 @@
 </template>
 
 <script setup lang="ts">
+const contactBtnText = useTemplateRef('contact-btn-text')
+const form = useTemplateRef('form')
 
+function submit() {
+  form.value!.submit()
+}
 </script>
 
 <style scoped lang="scss">
 
 .container {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   text-align: center;
-  padding: 0rem 5rem 5rem 5rem;
+  padding: 0rem 1.5rem 5rem 3rem;
   color: var(--light1);
   position: relative;
   min-height: 10vh;
@@ -107,7 +116,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+  margin-top: 4.8rem;
   max-width: 70em;
   text-align: center;
 }
@@ -116,7 +125,7 @@
   width: 55%;
   display: flex;
   flex-direction: column;
-  padding: 0rem 10rem 5rem 0rem;
+  padding: 0rem 15rem 5rem 0rem;
 }
 
 .contact-container .contact-info .box {
@@ -173,16 +182,12 @@
 .contact-form .input-box input:valid ~ span,
 .contact-form .input-box textarea:focus ~ span,
 .contact-form .input-box textarea:valid ~ span {
-  color: #e91e63;
+  color: var(--border-light);
   font-size: 0.7em;
   transform: translateY(-20px);
 }
 
-.contact-form .input-box input[type='submit'] {
-  color: var(--border);
-  border: none;
-  font-size: 2.1rem;
-}
+
 
 .container > .text p {
   text-align: center;
@@ -202,5 +207,44 @@
     .contact-info {
       order: 2;
     }
+}
+
+.contact-btn-wrapper {
+  width: 16rem;
+  height: 4rem;
+  border-radius: 2rem;
+  justify-self: center;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  height: 100%;
+  outline: 2px solid var(--border-highlight);
+  border-radius: 1rem;
+  background: radial-gradient(circle, var(--border-light) 50%, transparent 100%);
+  background-size: 0 0;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  gap: 1rem;
+
+  &:hover {
+    // background: var(--border);
+    box-shadow: 0px 0px 20px 2px var(--border-highlight);
+    background-size: 200% 200%;
+    outline: 1px solid rgba(255, 255, 255, 0);
+  }
+}
+
+.contact-btn span {
+    position: static !important; 
   }
 </style>
