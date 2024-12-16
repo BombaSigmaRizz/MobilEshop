@@ -10,14 +10,14 @@
           <Icon class ="icon" name="line-md:map-marker-twotone" size="1.5rem"/>
             <div class="text">
               <h3>Adress</h3>
-              <p>4833 Nancy Street,<br>Durham, NC (North Carolina),<br>27703</p>
+              <p>4833 Nancy Street,<br>Durham, NC (North Carolina),<br>27703</p><br>
             </div>
         </div>
         <div class="box">
           <Icon class="icon" name="line-md:phone-twotone" size="1.5rem"/>
           <div class="text">
             <h3>Phone</h3>
-            <p>919-641-5892</p>
+            <p>919-641-5892</p><br>
           </div>
         </div>
         <div class="box">
@@ -72,7 +72,7 @@
   justify-content: center;
   align-items: center;  
   flex-direction: column;
-  background-image: url('../assets/fotecky/contact-bg-dark.jpg');
+  background-image: url('../assets/img/contact-bg-dark.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -107,7 +107,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 4rem;
   max-width: 70em;
   text-align: center;
 }
@@ -116,7 +116,7 @@
   width: 55%;
   display: flex;
   flex-direction: column;
-  padding: 0rem 0rem 5rem 0rem;
+  padding: 0rem 10rem 5rem 0rem;
 }
 
 .contact-container .contact-info .box{
@@ -172,19 +172,19 @@
 .contact-form .input-box input:focus ~ span,
 .contact-form .input-box input:valid ~ span,
 .contact-form .input-box textarea:focus ~ span,
-.contact-form .input-box textarea:valid ~ span{
+.contact-form .input-box textarea:valid ~ span {
   color: #e91e63;
   font-size: 0.7em;
   transform: translateY(-20px);
 }
 
-.contact-form .input-box input[type='submit']{
+.contact-form .input-box input[type='submit'] {
   color: var(--border);
   border: none;
-  font-size: 2rem;
+  font-size: 2.1rem;
 }
 
-.container > .text p{
+.container > .text p {
   text-align: center;
 }
 
@@ -192,9 +192,15 @@
   color: var(--border-highlight);
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 800px) {
     .contact-container {
       flex-direction: column;
+    }
+    .contact-form {
+      order: 1;
+    }
+    .contact-info {
+      order: 2;
     }
   }
 </style>
