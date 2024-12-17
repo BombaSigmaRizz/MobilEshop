@@ -1,5 +1,6 @@
 <template>
   <div class="home" ref="home">
+    <div ref="cursor-follow" class="cursor-follow"></div>
     <section class="intro">
       <div class="slogan-shop">
         <h1 class="slogan">{{ slogan }}</h1>
@@ -58,6 +59,7 @@ function randomSlogan() {
 const home = useTemplateRef('home')
 const shopBtnText = useTemplateRef('shop-btn-text')
 const newImg = useTemplateRef('exhibition-img')
+const cursorFollow = useTemplateRef('cursor-follow')
 let currentSlide = 0
 let lastScroll = 0
 
@@ -71,7 +73,9 @@ function themeByScroll() {
   if (window.scrollY > window.innerHeight*1.5 && window.scrollY < window.innerHeight*2.5) {
     home.value.style.background = 'white'
     home.value.style.color = 'var(--bg0)'
+    cursorFollow.value!.style.background = 'rgba(0, 0, 0, 0.3)'
   } else {
+    cursorFollow.value!.style.background = 'rgba(255, 255, 255, 0.3)'
     home.value.style.background = 'var(--bg0)'
     home.value.style.color = 'var(--light1)'
   }
@@ -99,14 +103,33 @@ function smoothScrollTo(e: WheelEvent) {
   lastScroll = Date.now()
 }
 
+function cursorHighlight(e: MouseEvent) {
+  cursorFollow.value!.animate({ transform: `translate(${e.clientX - 24}px, ${e.clientY - 24}px)` }, { duration: 200, fill: 'forwards' })
+}
+
 onMounted(() => {
   fadeImage()
   useEventListener('scroll', themeByScroll)
   useEventListener('wheel', smoothScrollTo, { passive: false })
+  useEventListener('mousemove', cursorHighlight)
 })
 </script>
 
 <style scoped lang="scss">
+.cursor-follow {
+  width: 3rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 100000;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  transform: translateX(-100vw);
+}
+
 .home {
   height: fit-content;
   background: var(--bg0);

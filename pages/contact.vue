@@ -197,18 +197,6 @@ function submit() {
   color: var(--border-highlight);
 }
 
-@media only screen and (max-width: 800px) {
-    .contact-container {
-      flex-direction: column;
-    }
-    .contact-form {
-      order: 1;
-    }
-    .contact-info {
-      order: 2;
-    }
-}
-
 .contact-btn-wrapper {
   width: 16rem;
   height: 4rem;
@@ -225,7 +213,7 @@ function submit() {
   width: 100%;
   height: 100%;
   outline: 2px solid var(--border-highlight);
-  border-radius: 1rem;
+  border-radius: 2rem;
   background: radial-gradient(circle, var(--border-light) 50%, transparent 100%);
   background-size: 0 0;
   background-repeat: no-repeat;
@@ -246,5 +234,17 @@ function submit() {
 
 .contact-btn span {
     position: static !important; 
-  }
+}
+
+@media only screen and (max-width: 800px) {
+    .contact-container {
+      flex-direction: column;
+    }
+    .contact-form {
+      order: 1;
+    }
+    .contact-info {
+      order: 2;
+    }
+}
 </style>
