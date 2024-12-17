@@ -10,8 +10,7 @@
           </NuxtLink>
         </div>
       </div>
-      <div class="exhibition-img"></div>
-      <!-- <img ref="new-img" :onload="fadeImage()" class="brand-new-img" src="../assets/img/iphone16proTW.png" draggable="false" width="4000" height="4000"> -->
+      <div ref="exhibition-img" class="exhibition-img"></div>
     </section>
 
     <section class="best-prices">
@@ -58,14 +57,14 @@ function randomSlogan() {
 
 const home = useTemplateRef('home')
 const shopBtnText = useTemplateRef('shop-btn-text')
-// const newImg = useTemplateRef('new-img')
+const newImg = useTemplateRef('exhibition-img')
 let currentSlide = 0
 let lastScroll = 0
 
-// function fadeImage() {
-//   if (!newImg.value) return
-//   newImg.value.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, fill: 'forwards' })
-// }
+function fadeImage() {
+  if (!newImg.value) return
+  newImg.value.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, fill: 'forwards' })
+}
 
 function themeByScroll() {
   if (!home.value) return
@@ -101,6 +100,7 @@ function smoothScrollTo(e: WheelEvent) {
 }
 
 onMounted(() => {
+  fadeImage()
   useEventListener('scroll', themeByScroll)
   useEventListener('wheel', smoothScrollTo, { passive: false })
 })
@@ -159,7 +159,6 @@ section {
   height: 4rem;
   border-radius: 2rem;
   z-index: 100;
-  box-sizing: border-box;
 }
 
 .shop-btn {
@@ -204,6 +203,7 @@ section {
   background-image: url('../assets/img/iphone16proTW.png');
   background-position: 50% 50%;
   background-size: cover;
+  opacity: 0;
 }
 
 @keyframes intro {
