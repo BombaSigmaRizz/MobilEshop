@@ -221,11 +221,13 @@ section {
 }
 
 .exhibition-img {
-  width: clamp(22rem, 40%, 100vh);
+  width: clamp(22rem, 35vw, 90vh);
+  max-width: 100vh;
   height: 100%;
   background-image: url('../assets/img/iphone16proTW.png');
   background-position: 50% 50%;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   opacity: 0;
 }
 
