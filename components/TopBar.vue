@@ -4,13 +4,13 @@
       <img src="" alt="Logo">
     </div>
     <div class="middle">
-      <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
-      <NuxtLink class="link" :class="{'active': isActive('shop')}" to="/shop">Shop</NuxtLink>
+      <NuxtLink class="link interactable" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
+      <NuxtLink class="link interactable" :class="{'active': isActive('shop')}" to="/shop">Shop</NuxtLink>
     </div>
     <div class="right">
-      <NuxtLink class="link" :class="{'active': isActive('contact')}" to="/contact">Contact</NuxtLink>
-      <NuxtLink class="link" :class="{'active': isActive('account')}" to="/account">Account</NuxtLink>
-      <NuxtLink class="link" :class="{'active': isActive('basket')}" to="/basket"><Icon name="ph:basket" size="2.5rem"/></NuxtLink>
+      <NuxtLink class="link interactable" :class="{'active': isActive('contact')}" to="/contact">Contact</NuxtLink>
+      <NuxtLink class="link interactable" :class="{'active': isActive('account')}" to="/account">Account</NuxtLink>
+      <NuxtLink class="link interactable" :class="{'active': isActive('basket')}" to="/basket"><Icon name="ph:basket" size="2.5rem"/></NuxtLink>
     </div>
   </div>
 </template>

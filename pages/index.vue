@@ -4,7 +4,7 @@
     <section class="intro">
       <div class="slogan-shop">
         <h1 class="slogan">{{ slogan }}</h1>
-        <div class="shop-btn-wrapper" @mouseenter="scrambleWordEffect(shopBtnText!)">
+        <div class="shop-btn-wrapper interactable" @mouseenter="scrambleWordEffect(shopBtnText!)">
           <NuxtLink class="shop-btn">
             <span data-value="Shop Now" ref="shop-btn-text">Shop Now</span>
             <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
@@ -63,6 +63,7 @@ const cursorFollow = useTemplateRef('cursor-follow')
 let currentSlide = 0
 let lastScroll = 0
 
+
 function fadeImage() {
   if (!newImg.value) return
   newImg.value.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 800, fill: 'forwards' })
@@ -104,7 +105,10 @@ function smoothScrollTo(e: WheelEvent) {
 }
 
 function cursorHighlight(e: MouseEvent) {
-  cursorFollow.value!.animate({ transform: `translate(${e.clientX - 24}px, ${e.clientY - 24}px)` }, { duration: 200, fill: 'forwards' })
+  const interactable = (e.target as HTMLElement).closest('.interactable')
+  const interacting = interactable !== null
+
+  cursorFollow.value!.animate({ transform: `translate(${e.clientX - 24}px, ${e.clientY - 24}px) scale(${interacting ? 2 : 1})` }, { duration: 200, fill: 'forwards' })
 }
 
 onMounted(() => {
@@ -169,19 +173,19 @@ section {
   align-items: center;
   justify-content: center;
   color: var(--text);
-  // transform: translateX(10rem);
+  min-width: 50vw;
   gap: 1rem;
 }
 
 .slogan {
   font-size: 1.8em;
+  max-width: 12em;
 }
 
 .shop-btn-wrapper {
   width: 16rem;
   height: 4rem;
   border-radius: 2rem;
-  z-index: 100;
 }
 
 .shop-btn {
@@ -203,6 +207,7 @@ section {
   cursor: pointer;
   transition: all 0.4s ease;
   gap: 1rem;
+  user-select: none;
 
   .icon {
     transition: all 0.4s ease;
