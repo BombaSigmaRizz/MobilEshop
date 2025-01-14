@@ -30,7 +30,7 @@ import type { IProduct } from '~/types/types';
   // box-sizing: border-box;
   padding: 1rem;
   gap: 1rem;
-  transition: all 0.4s ease;
+  transition: scale 0.4s ease;
 
   &:hover {
     outline: 3px solid var(--border-light);

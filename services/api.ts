@@ -8,22 +8,11 @@ export interface User {
 
 class API {
   private client: AxiosInstance
-  private cookie: string | null = null
 
   constructor() {
     this.client = axios.create({
       baseURL: 'http://localhost:3333'
     })
-
-    this.client.interceptors.request.use(config => {
-      config.headers['Cookie'] = `Bearer ${this.cookie}`
-
-      return config
-    })
-  }
-
-  setToken(token: string | null) {
-    this.cookie = token
   }
 
   async request<T = any>(options: AxiosRequestConfig) {

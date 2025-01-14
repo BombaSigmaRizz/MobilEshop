@@ -9,4 +9,13 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@pinia/nuxt',
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler' // or "modern"
+        }
+      }
+    }
+  }
 })

@@ -1,10 +1,9 @@
 <template>
   <div class="home" ref="home">
-    <div ref="cursor-follow" class="cursor-follow"></div>
     <section class="intro">
       <div class="slogan-shop">
         <h1 class="slogan">{{ slogan }}</h1>
-        <div class="shop-btn-wrapper interactable" @mouseenter="scrambleWordEffect(shopBtnText!)">
+        <div class="shop-btn-wrapper" @mouseenter="scrambleWordEffect(shopBtnText!)">
           <NuxtLink class="shop-btn">
             <span data-value="Shop Now" ref="shop-btn-text">Shop Now</span>
             <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
@@ -33,6 +32,7 @@
 
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core';
+import { api } from '~/services/api';
 
 function pixelToVh(px: number) {
   return 100 / document.documentElement.clientHeight
@@ -59,7 +59,6 @@ function randomSlogan() {
 const home = useTemplateRef('home')
 const shopBtnText = useTemplateRef('shop-btn-text')
 const newImg = useTemplateRef('exhibition-img')
-const cursorFollow = useTemplateRef('cursor-follow')
 let currentSlide = 0
 let lastScroll = 0
 
@@ -74,15 +73,15 @@ function themeByScroll() {
   if (window.scrollY > window.innerHeight*1.5 && window.scrollY < window.innerHeight*2.5) {
     home.value.style.background = 'white'
     home.value.style.color = 'var(--bg0)'
-    cursorFollow.value!.style.background = 'rgba(0, 0, 0, 0.3)'
   } else {
-    cursorFollow.value!.style.background = 'rgba(255, 255, 255, 0.3)'
     home.value.style.background = 'var(--bg0)'
     home.value.style.color = 'var(--light1)'
   }
 }
 function smoothScrollTo(e: WheelEvent) {
+  e.stopPropagation()
   if (Date.now() - lastScroll < 500) return
+  console.log(e.deltaY)
 
   let slide0 = 0
   let slide1 = 0.945
@@ -104,35 +103,14 @@ function smoothScrollTo(e: WheelEvent) {
   lastScroll = Date.now()
 }
 
-function cursorHighlight(e: MouseEvent) {
-  const interactable = (e.target as HTMLElement).closest('.interactable')
-  const interacting = interactable !== null
-
-  cursorFollow.value!.animate({ transform: `translate(${e.clientX - 24}px, ${e.clientY - 24}px) scale(${interacting ? 2 : 1})` }, { duration: 200, fill: 'forwards' })
-}
-
-onMounted(() => {
+onMounted( async () => {
   fadeImage()
   useEventListener('scroll', themeByScroll)
   useEventListener('wheel', smoothScrollTo, { passive: false })
-  useEventListener('mousemove', cursorHighlight)
 })
 </script>
 
 <style scoped lang="scss">
-.cursor-follow {
-  width: 3rem;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.3);
-  z-index: 100000;
-  pointer-events: none;
-  transition: all 0.4s ease;
-  transform: translateX(-100vw);
-}
 
 .home {
   height: fit-content;
@@ -173,12 +151,13 @@ section {
   align-items: center;
   justify-content: center;
   color: var(--text);
-  min-width: 50vw;
+  min-width: 35em;
   gap: 1rem;
 }
 
 .slogan {
   font-size: 1.8em;
+  font-size: clamp(1.5em, 4vh, 2.5em);
   max-width: 12em;
 }
 
@@ -226,9 +205,9 @@ section {
 }
 
 .exhibition-img {
-  width: clamp(22rem, 35vw, 90vh);
-  max-width: 100vh;
-  height: 100%;
+  width: clamp(20em, 40vw, 90vw);
+  // max-width: 100vh;
+  height: clamp(20em, 70vh, 90vh);
   background-image: url('../assets/img/iphone16proTW.png');
   background-position: 50% 50%;
   background-size: contain;
