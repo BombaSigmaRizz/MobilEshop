@@ -81,7 +81,7 @@ function submit() {
   justify-content: center;
   align-items: center;  
   flex-direction: column;
-  background-image: url('../assets/img/contact-bg-dark.jpg');
+  background-image: url('../assets/img/random/contact-bg-dark.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

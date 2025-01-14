@@ -1,7 +1,7 @@
 <template>
   <div class="topbar">
     <div class="left">
-      <img src="../assets/img/logosigma.png" width="500" height="375" class="logo"></img>
+      <img src="../assets/img/random/logosigma.png" width="500" height="375" class="logo"></img>
     </div>
     <div class="middle">
       <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
@@ -39,7 +39,7 @@ function isActive(routeName: string) {
   outline: 2px solid #0a21c0;
   align-items: center;
   z-index: 1000;
-
+    
   div {
     display: flex;
     align-items: center;

@@ -208,7 +208,7 @@ section {
   width: clamp(20em, 40vw, 90vw);
   // max-width: 100vh;
   height: clamp(20em, 70vh, 90vh);
-  background-image: url('../assets/img/iphone16proTW.png');
+  background-image: url('../assets/img/IP16W/iphone16proTW.png');
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
