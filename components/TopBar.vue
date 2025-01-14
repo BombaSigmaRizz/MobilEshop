@@ -1,7 +1,7 @@
 <template>
   <div class="topbar">
     <div class="left">
-      <img src="" alt="Logo">
+      <div class="logo"></div>
     </div>
     <div class="middle">
       <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
@@ -59,6 +59,10 @@ function isActive(routeName: string) {
     justify-content: flex-end;
     gap: 1rem;
   }
+}
+
+.logo {
+  background-image: url('../assets/img/lo');
 }
 
 .link {
