@@ -1,7 +1,7 @@
 <template>
   <div class="topbar">
     <div class="left">
-      <img src="" alt="Logo">
+      <img src="assets\img\logosigma.png" alt="Logo">
     </div>
     <div class="middle">
       <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
