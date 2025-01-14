@@ -1,7 +1,7 @@
 <template>
-  <div class="product-wrapper">
+  <div class="product-wrapper" @click="router.push(`/product/${props.desc.id}`)">
     <div class="product-image">
-      <img :src="props.desc.image" alt="product.name">
+      <img :src="props.desc.images" alt="product.name">
     </div>
     <div class="product-info">
       <h2>{{ props.desc.name }}</h2>
@@ -12,6 +12,8 @@
 </template>
 
 <script setup lang="ts">
+const router = useRouter()
+
 const props = defineProps<{
   desc: IProduct
 }>()
