@@ -4,7 +4,7 @@
       <div class="slogan-shop">
         <h1 class="slogan">{{ slogan }}</h1>
         <div class="shop-btn-wrapper" @mouseenter="scrambleWordEffect(shopBtnText!)">
-          <NuxtLink class="shop-btn">
+          <NuxtLink class="shop-btn" to="/shop">
             <span data-value="Shop Now" ref="shop-btn-text">Shop Now</span>
             <Icon class="icon" name="gg:arrow-right-o" size="2rem"/>
           </NuxtLink>
@@ -187,6 +187,8 @@ section {
   transition: all 0.4s ease;
   gap: 1rem;
   user-select: none;
+  text-decoration: none;
+  color: var(--text);
 
   .icon {
     transition: all 0.4s ease;
