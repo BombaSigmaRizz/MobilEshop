@@ -1,15 +1,29 @@
+import { api } from "~/services/api"
+
 export const useAuthStore = defineStore('auth', () => {
-  const cookie = ref<string | undefined>(undefined)
 
-  function login(email: string, password: string) {
-
+  async function login(payload: { email: string, password: string }) {
+    const response = await api.post('/auth/login', payload)
+    return response
   }
 
-  function register() {
-
+  async function register(payload: { name: string, email: string, password: string }) {
+    const response = await api.post('/auth/register', payload)
+    return response
   }
 
-  function me() {
-    
+  async function me() {
+    const response = await api.get('/auth/me')
+    if (!response) {
+      return null
+    } else {
+      return response
+    }
+  }
+
+  return {
+    login,
+    register,
+    me
   }
 })

@@ -1,0 +1,42 @@
+<template>
+  <div class="server-down-page">
+    <div class="text">
+      <h1>Server Down</h1>
+      <p>Sorry, the server is down. Please try again later.</p>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+
+</script>
+
+<style scoped lang="scss">
+.server-down-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  color: var(--text);
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/img/page/server-down.png');
+  background-repeat: no-repeat;
+  background-position: 5% 50%;
+}
+
+.text {
+  margin-left: 30%;
+}
+
+h1 {
+  font-size: 3.4rem;
+  font-weight: 700;
+}
+
+p {
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+</style>

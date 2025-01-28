@@ -10,7 +10,7 @@ import { type IProduct } from '~/types/types';
 const route = useRoute()
 
 onBeforeMount(async () => {
-  const response = await api.get<IProduct>(`/product/${route.params.id}`)
+  const response = await api.get<IProduct>(`/api/product/${route.params.id}`)
   console.log(response)
 })
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="topbar">
     <div class="left">
-      <img draggable="false" src="../assets/img/random/logosigma.png" width="500" height="375" class="logo"></img>
+      <img draggable="false" src="../assets/img/page/logosigma.png" width="500" height="375" class="logo"></img>
     </div>
     <div class="middle">
       <NuxtLink class="link" :class="{'active': isActive('index')}" to="/">Home</NuxtLink>
@@ -31,7 +31,7 @@ function isActive(routeName: string) {
   top: 0;
   left: 0;
   background-color: var(--bg0);
-  color: var(--light1);
+  color: var(--text);
   width: 100vw;
   height: 3.2rem;
   box-sizing: border-box;
@@ -70,7 +70,7 @@ function isActive(routeName: string) {
 .link {
   text-decoration: none;
   transition: 0.2s;
-  color: var(--light1);
+  color: var(--text);
 }
 
 .active {

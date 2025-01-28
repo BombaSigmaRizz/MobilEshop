@@ -75,7 +75,7 @@ function themeByScroll() {
     home.value.style.color = 'var(--bg0)'
   } else {
     home.value.style.background = 'var(--bg0)'
-    home.value.style.color = 'var(--light1)'
+    home.value.style.color = 'var(--text)'
   }
 }
 function smoothScrollTo(e: WheelEvent) {
@@ -116,7 +116,7 @@ onMounted( async () => {
   height: fit-content;
   background: var(--bg0);
   transition: all 0.4s ease;
-  color: var(--light1);
+  color: var(--text);
 }
 
 section {

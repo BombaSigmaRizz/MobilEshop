@@ -73,7 +73,7 @@ function submit() {
   font-size: 1.3rem;
   text-align: center;
   padding: 0rem 1.5rem 5rem 3rem;
-  color: var(--light1);
+  color: var(--text);
   position: relative;
   min-height: 10vh;
   height: calc(100vh - 8.2rem);
@@ -81,7 +81,7 @@ function submit() {
   justify-content: center;
   align-items: center;  
   flex-direction: column;
-  background-image: url('../assets/img/random/contact-bg-dark.jpg');
+  background-image: url('../assets/img/page/contact-bg-dark.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
@@ -135,7 +135,7 @@ function submit() {
 }
 
 .contact-form {
-  color: var(--light1);
+  color: var(--text);
   width: 40%;
   
 }
@@ -174,7 +174,7 @@ function submit() {
   font-size: 1em;
   margin: 10px 0;
   pointer-events: none;
-  transition: 0.5s;
+  transition: all 0.3s;
   color:#ffffff;
 }
 

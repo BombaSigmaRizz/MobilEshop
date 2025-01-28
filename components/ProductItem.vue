@@ -26,7 +26,7 @@ import type { IProduct } from '~/types/types';
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: var(--light1);
+  color: var(--text);
   border-radius: 1rem;
   // overflow: hidden;
   // box-sizing: border-box;
