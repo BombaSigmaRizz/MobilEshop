@@ -207,10 +207,9 @@ section {
 }
 
 .exhibition-img {
-  width: clamp(20em, 40vw, 90vw);
-  // max-width: 100vh;
-  height: clamp(20em, 70vh, 90vh);
-  background-image: url('../assets/img/IP16W/iphone16proTW.png');
+  width: clamp(20em, 45vw, 90vw);
+  height: clamp(20em, 95vh, 90vh);
+  background-image: url('../assets/img/Iphone16/IP16W/IP16TW-4000.png');
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
