@@ -17,5 +17,13 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+
+  runtimeConfig: {
+    public: {
+      api: {
+        url: 'http://localhost:3333'
+      }
+    }
   }
 })

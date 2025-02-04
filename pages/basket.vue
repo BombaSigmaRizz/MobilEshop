@@ -1,6 +1,5 @@
 <template>
-  <div>
-    
+  <div class="basket-page">    
   </div>
 </template>
 
@@ -8,6 +7,6 @@
 
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

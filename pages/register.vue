@@ -31,9 +31,12 @@
 <script setup lang="ts">
 import { AxiosError } from 'axios'
 
+definePageMeta({
+  auth: false
+})
+
 const auth = useAuthStore()
 const registerBtnText = useTemplateRef('register-btn-text')
-const router = useRouter()
 const errorMessages = ref<string[]>([])
 
 const form = ref({
@@ -45,10 +48,14 @@ const form = ref({
 async function register() {
   try {
     await auth.register(form.value)
-    router.push('/account')
+    navigateTo('/')
   } catch (error) {
     console.log(error)
     if (error instanceof AxiosError) {
+      if (error.code === 'ERR_BAD_RESPONSE') {
+        navigateTo('/server-down')
+        return
+      }
       for (let i = 0; i < error.response?.data.errors.length; i++) {
         errorMessages.value[i] = error.response?.data.errors[i].message
       }

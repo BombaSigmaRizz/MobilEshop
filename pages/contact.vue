@@ -62,6 +62,10 @@
 const contactBtnText = useTemplateRef('contact-btn-text')
 const form = useTemplateRef('form')
 
+definePageMeta({
+  auth: false
+})
+
 function submit() {
   form.value!.submit()
 }

@@ -1,5 +1,7 @@
 <template>
+
   <div class="shop-container">
+    <ShopSidebar />
     <ProductList />
   </div>
 </template>
@@ -11,6 +13,6 @@
 <style scoped lang="scss">
 .shop-container {
   height: 100%;
-  width: 100%;
+  margin-left: 20em;
 }
 </style>

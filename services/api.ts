@@ -1,17 +1,18 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from "axios"
 
-export interface User {
-  fullName: string
-  email: string
-  password: string
+export type ApiOptions = {
+  url: string
+  headers?: Record<string, string>
 }
 
-class API {
+export class Api {
   private client: AxiosInstance
 
-  constructor() {
+  constructor(private options: ApiOptions) {
     this.client = axios.create({
-      baseURL: 'http://localhost:3333'
+      baseURL: this.options.url,
+      withCredentials: true,
+      headers: this.options.headers
     })
   }
 
@@ -92,5 +93,3 @@ class API {
   }
 
 }
-
-export const api = new API()
