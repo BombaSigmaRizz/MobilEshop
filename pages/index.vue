@@ -235,11 +235,12 @@ section {
     flex-direction: column;
   }
   .slogan-shop {
-    transform: none;
+    transform: translateY(-30%);
     order: 2;
   }
   .brand-new-img {
     order: 1;
   }
+
 }
 </style>

@@ -1,13 +1,23 @@
 <template>
   <div class="product-list-container">
-    <ProductItem :desc="product" v-for="product in productList" :key="product.id"/>
+    <ProductItem :desc="product" v-for="product in filteredProductList" :key="product.id"/>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { IProduct } from '~/types/types';
 
+const search = defineModel('search', {
+  type: String,
+  default: ''
+})
+
+
 const productList = ref<IProduct[]>([])
+
+const filteredProductList = computed(() => {
+  return productList.value.filter(product => product.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()))
+})
 
 productList.value.push({
   id: 0,

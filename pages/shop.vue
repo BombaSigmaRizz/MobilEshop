@@ -1,12 +1,20 @@
 <template>
-
   <div class="shop-container">
-    <ShopSidebar />
-    <ProductList />
+    <ShopSidebar v-model:search="search" />
+    <ProductList v-model:search="search" />
   </div>
 </template>
 
 <script setup lang="ts">
+
+const search = defineModel('search', {
+  type: String,
+  default: ''
+})
+
+definePageMeta({
+  auth: false
+})
 
 </script>
 
