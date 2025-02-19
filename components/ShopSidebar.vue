@@ -4,16 +4,21 @@
       <input type="text" placeholder="Search" v-model="search" class="search-bar" />
       <Icon class="search-icon" name="oui:search" size="1.5rem"/>
     </div>
+    <div v-show="isAdmin && auth.isLoggedIn" class="add-product-wrapper">
+      <NuxtLink to="/add-product">Add Product</NuxtLink>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+const auth = useAuthStore()
+
+const isAdmin = computed(() => auth.user?.isAdmin)
 
 const search = defineModel('search', {
   type: String,
   default: ''
 })
-
 </script>
 
 <style scoped lang="scss">
@@ -23,12 +28,22 @@ const search = defineModel('search', {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 20rem;
+  width: 20em;
   height: calc(100vh - 3.2rem);
   color: var(--text);
   z-index: 100;
   border-right: 2px solid transparent;
   border-image: linear-gradient(45deg, var(--border-highlight), var(--contrast)) 1 100%;
+}
+
+.add-product-wrapper {
+  width: 10em;
+  height: 3em;
+
+  a {
+    text-decoration: none;
+    color: var(--text);
+  }
 }
 
 .search-wrapper {

@@ -15,12 +15,11 @@ const search = defineModel('search', {
 definePageMeta({
   auth: false
 })
-
 </script>
 
 <style scoped lang="scss">
 .shop-container {
   height: 100%;
-  margin-left: 20em;
+  padding-left: 20em;
 }
 </style>

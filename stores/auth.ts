@@ -1,5 +1,5 @@
+import { AxiosError } from "axios"
 import type { User } from "~/models/user"
-import {  } from "~/services/api"
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null)
@@ -26,8 +26,11 @@ export const useAuthStore = defineStore('auth', () => {
 
   async function data() {
     try {
-      return await api.get('/auth/me')
+      user.value = await api.get('/auth/me')
     } catch (error) {
+      if (error instanceof AxiosError && error.response?.status === 401) {
+        isLoggedIn.value = false
+      }
       // TODO: catch only if unauthorized error
       console.log(error)
       return null
@@ -40,13 +43,13 @@ export const useAuthStore = defineStore('auth', () => {
   }
 
   async function load() {
-    
-    user.value = await data()
+    await data()
     isLoggedIn.value = !!user.value
   }
 
   return {
     isLoggedIn,
+    user,
     login,
     register,
     logout,

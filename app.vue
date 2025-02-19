@@ -18,4 +18,14 @@
   width: 100%;
   height: calc(100vh - 3.2rem);
 }
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.4s, filter .4s;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
 </style>

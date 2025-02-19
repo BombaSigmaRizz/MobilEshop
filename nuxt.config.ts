@@ -25,5 +25,12 @@ export default defineNuxtConfig({
         url: 'http://localhost:3333'
       }
     }
+  },
+  
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    }
   }
 })
