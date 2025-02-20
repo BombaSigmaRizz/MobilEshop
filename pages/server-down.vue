@@ -9,6 +9,21 @@
 
 <script lang="ts" setup>
 
+const router = useRouter()
+const auth = useAuthStore()
+const api = useApi()
+
+definePageMeta({
+  auth: false
+})
+
+onBeforeMount(async () => {
+  const response = await api.get('/api/check')
+  console.log(response)
+  if (response === true) {
+    navigateTo('/')
+  }
+})
 </script>
 
 <style scoped lang="scss">

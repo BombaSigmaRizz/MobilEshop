@@ -32,7 +32,10 @@
 
 <script setup lang="ts">
 import { useEventListener } from '@vueuse/core';
-import { api } from '~/services/api';
+
+definePageMeta({
+  auth: false
+})
 
 function pixelToVh(px: number) {
   return 100 / document.documentElement.clientHeight
@@ -232,11 +235,12 @@ section {
     flex-direction: column;
   }
   .slogan-shop {
-    transform: none;
+    transform: translateY(-30%);
     order: 2;
   }
   .brand-new-img {
     order: 1;
   }
+
 }
 </style>

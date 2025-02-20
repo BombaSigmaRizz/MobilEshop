@@ -1,7 +1,7 @@
 <template>
   <div class="product-wrapper" @click="router.push(`/product/${props.desc.id}`)">
     <div class="product-image">
-      <img :src="props.desc.images" alt="product.name">
+      <img :src="props.desc.images[0]" alt="product.name">
     </div>
     <div class="product-info">
       <h2>{{ props.desc.name }}</h2>  
@@ -29,14 +29,14 @@ import type { IProduct } from '~/types/types';
   color: var(--text);
   border-radius: 1rem;
   // overflow: hidden;
-  // box-sizing: border-box;
   padding: 1rem;
   gap: 1rem;
   transition: scale 0.4s ease;
+  box-sizing: border-box;
 
   &:hover {
-    outline: 3px solid var(--border-light);
-    scale: 1.05 1.05;
+    border: 2px solid var(--border-highlight);
+    scale: 1.05;
   }
 }
 

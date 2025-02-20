@@ -17,5 +17,20 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+
+  runtimeConfig: {
+    public: {
+      api: {
+        url: 'http://localhost:3333'
+      }
+    }
+  },
+  
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    }
   }
 })

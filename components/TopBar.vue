@@ -36,9 +36,14 @@ function isActive(routeName: string) {
   height: 3.2rem;
   box-sizing: border-box;
   padding: 0 2rem 0 0;
-  outline: 2px solid #0a21c0;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(-45deg, var(--border-highlight), var(--contrast)) 1;
+  border-image-slice: 1;
+  border-image-width: 1;
+  border-image-repeat: stretch;
   align-items: center;
   z-index: 1000;
+  overflow: hidden;
     
   div {
     display: flex;

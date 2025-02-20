@@ -27,10 +27,12 @@
 <script setup lang="ts">
 import { AxiosError } from 'axios'
 
+definePageMeta({
+  auth: false
+})
 
 const auth = useAuthStore()
 const loginBtnText = useTemplateRef('login-btn-text')
-const router = useRouter()
 const errorMessages = ref<string[]>([])
 
 const form = ref({
@@ -39,12 +41,17 @@ const form = ref({
 })
 
 async function login() {
+  errorMessages.value = []
   try {
     await auth.login(form.value)
-    router.push('/account')
+    navigateTo('/')
   } catch (error) {
     console.log(error)
     if (error instanceof AxiosError) {
+      if (error.code === 'ERR_BAD_RESPONSE') {
+        navigateTo('/server-down')
+        return
+      }
       for (let i = 0; i < error.response?.data.errors.length; i++) {
         errorMessages.value[i] = error.response?.data.errors[i].message
       }
