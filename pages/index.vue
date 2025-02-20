@@ -1,3 +1,4 @@
+
 <template>
   <div class="home" ref="home">
     <section class="intro">
