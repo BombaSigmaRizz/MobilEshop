@@ -82,6 +82,11 @@ function submit() {
   align-items: center;  
   flex-direction: column;
   background-image: url('../assets/img/page/contact-bg-dark.jpg');
+  mask-image: linear-gradient(
+    rgb(0 0 0 / 0.19),
+    rgb(0 0 0 / 0.94),
+    rgb(0 0 0 / 0.19)
+    );
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

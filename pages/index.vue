@@ -209,7 +209,7 @@ section {
 .exhibition-img {
   width: clamp(20em, 45vw, 90vw);
   height: clamp(20em, 95vh, 90vh);
-  background-image: url('../assets/img/Iphone16/IP16W/IP16TW-4000.png');
+  background-image: url('../assets/img/page/IP16TW-4000.png');
   background-position: 50% 50%;
   background-size: contain;
   background-repeat: no-repeat;
