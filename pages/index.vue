@@ -217,6 +217,7 @@ section {
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
+  //skibidi
 }
 
 @keyframes intro {
