@@ -4,7 +4,7 @@
       <img :src="props.desc.images[0]" alt="product.name">
     </div>
     <div class="product-info">
-      <h2>{{ props.desc.name }}</h2>
+      <h2>{{ props.desc.name }}</h2>  
       <p>{{ props.desc.description }}</p>
       <p>{{ props.desc.price }}</p>
     </div>

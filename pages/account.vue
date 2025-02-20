@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-const auth = useAuthStore()
+const auth = useAuthStore() //https://www.youtube.com/shorts/hgXAGfBgR7k email
 const router = useRouter()
 </script>
 
