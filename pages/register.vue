@@ -3,7 +3,7 @@
     <div class="register-container">
       <h1>Register</h1>
       <span class="error-msg" v-for="msg in errorMessages" v-if="errorMessages">{{ msg }}</span>
-      <form @submit.prevent="register()" class="register-form">
+      <form @submit.prevent="register" class="register-form">
         <div class="input-field">
           <input type="text" required v-model="form.name" />
           <span>Name</span>
@@ -16,10 +16,10 @@
           <input type="password" required v-model="form.password" />
           <span>Password</span>
         </div>
-        <div class="register-btn-wrapper" @click="register()" @mouseenter="scrambleWordEffect(registerBtnText!)">
-          <NuxtLink class="register-btn">
+        <div class="register-btn-wrapper" @mouseenter="scrambleWordEffect(registerBtnText!)">
+          <button type="submit" class="register-btn">
             <span data-value="Register" ref="register-btn-text">Register</span>
-          </NuxtLink>
+          </button>
         </div>
         
         <NuxtLink class="has-account" to="login">Already have an Account</NuxtLink>
@@ -30,6 +30,7 @@
 
 <script setup lang="ts">
 import { AxiosError } from 'axios'
+import { ref } from 'vue'
 
 definePageMeta({
   auth: false
@@ -45,9 +46,12 @@ const form = ref({
   password: ''
 })
 
+const WEB3FORMS_ACCESS_KEY = "438b0ebd-b6d3-4842-9ecf-0fd724269021"
+
 async function register() {
   try {
     await auth.register(form.value)
+    await sendWelcomeEmail(form.value.email, form.value.name)
     navigateTo('/')
   } catch (error) {
     console.log(error)
@@ -60,6 +64,28 @@ async function register() {
         errorMessages.value[i] = error.response?.data.errors[i].message
       }
     }
+  }
+}
+
+async function sendWelcomeEmail(email: string, name: string) {
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: "Welcome to MobilEshop",
+      from_name: "MobilEeshop",
+      from_email: "no-reply-ME@gmail.com",
+      to_email: email,
+      message: `Hi ${name},<br><br>Welcome to MobilEeshop! Your registration was successful.<br><br>Happy shopping!<br>Best regards,<br>MobilEeshop Co`
+    }),
+  })
+  const result = await response.json()
+  if (!result.success) {
+    console.error("Failed to send welcome email: " + result.message)
   }
 }
 </script>
@@ -153,6 +179,7 @@ input {
 }
 
 .register-btn {
+  color: #EFF6EE;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -30,25 +30,25 @@
       </div>
 
       <div class="contact-form">
-        <form ref="form">
+        <form @submit.prevent="submitForm">
           <h2>Send us message</h2>
           <div class="input-box">
-            <input type="text" name="" required>
+            <input type="text" id="name" v-model="name" name="name" required>
             <span>Full Name</span>
           </div>
           <div class="input-box">
-            <input type="text" name="" required>
+            <input type="email" id="email" v-model="email" name="email" required>
             <span>Email</span>
           </div>
           <div class="input-box">
-            <textarea required></textarea>
+            <textarea id="message" v-model="message" name="message" required></textarea>
             <span>Type your message...</span>
           </div>
           <div class="input-box">
-            <div class="contact-btn-wrapper" @click="submit()" @mouseenter="scrambleWordEffect(contactBtnText!)">
-              <NuxtLink class="contact-btn">
+            <div class="contact-btn-wrapper" @mouseenter="scrambleWordEffect(contactBtnText!)">
+              <button type="submit" class="contact-btn">
                 <span data-value="Send" ref="contact-btn-text">Send</span>
-              </NuxtLink>
+              </button>
             </div>
           </div>
         </form>
@@ -59,15 +59,41 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const contactBtnText = useTemplateRef('contact-btn-text')
-const form = useTemplateRef('form')
+const name = ref('')
+const email = ref('')
+const message = ref('')
+const WEB3FORMS_ACCESS_KEY = "438b0ebd-b6d3-4842-9ecf-0fd724269021"
 
 definePageMeta({
   auth: false
 })
 
-function submit() {
-  form.value!.submit()
+async function submitForm() {
+  const response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify({
+      access_key: WEB3FORMS_ACCESS_KEY,
+      name: name.value,
+      email: email.value,
+      message: message.value,
+    }),
+  })
+  const result = await response.json()
+  if (result.success) {
+    alert("Mail sent successfully")
+    name.value = ''
+    email.value = ''
+    message.value = ''
+  } else {
+    alert("Failed to send mail: " + result.message)
+  }
 }
 </script>
 
@@ -80,7 +106,7 @@ function submit() {
   color: var(--text);
   position: relative;
   min-height: 10vh;
-  height: calc(100vh - 8.2rem);
+  height: calc(100vh - 3.2rem);
   display: flex;
   justify-content: center;
   align-items: center;  
