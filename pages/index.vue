@@ -1,4 +1,3 @@
-
 <template>
   <div class="home" ref="home">
     <section class="intro">
@@ -218,7 +217,6 @@ section {
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
-  //skibidi
 }
 
 @keyframes intro {
