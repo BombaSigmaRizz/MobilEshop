@@ -7,6 +7,8 @@
 <script setup lang="ts">
 import { type IProduct, EBrandTags, EColorTags, EStorageTags } from '~/types/types';
 
+const api = useApi()
+
 const search = defineModel('search', {
   type: String,
   default: ''
@@ -19,16 +21,10 @@ const filteredProductList = computed(() => {
   return productList.value.filter(product => product.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()))
 })
 
-productList.value.push({
-  id: 0,
-  name: 'Ele pele',
-  description: 'penis mobil',
-  price: 6969,
-  rating: 4,
-  images: ['https://via.placeholder.com/150'],
-  brand: EBrandTags.Iphone,
-  storage: EStorageTags.GB256,
-  color: EColorTags.Red
+onBeforeMount(async () => {
+  const response = await api.get<IProduct[]>('/products')
+  console.log(response)
+  productList.value = response
 })
 </script>
 
@@ -38,7 +34,7 @@ productList.value.push({
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   grid-auto-rows: 20rem;
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 2rem; 
   background: var(--bg0);
   height: 100%;
   box-sizing: border-box;

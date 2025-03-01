@@ -2,6 +2,7 @@
   <div class="product-page">
     {{ product?.name }}
     {{ product?.description }}
+    sdfsfds
   </div>
 </template>
 

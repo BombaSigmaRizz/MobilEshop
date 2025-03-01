@@ -34,7 +34,8 @@ export interface IProduct {
   price: number;
   description: string;
   rating: number;
-  images: string[];
+  showcaseImage: string;
+  catalogImages: string[];
   brand: EBrandTags;
   storage: EStorageTags;
   color: EColorTags;

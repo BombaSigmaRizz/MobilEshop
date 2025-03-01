@@ -13,7 +13,8 @@
         <input type="number" v-model="form.price" class="input-field">
         <span>Product Price</span>
       </div>
-      <select class="brand-select" v-model="form.brand">
+      <div class="input-wrapper">
+        <select class="brand-select" v-model="form.brand">
         <option :value="EBrandTags.Iphone">{{ EBrandTags.Iphone }}</option>
         <option :value="EBrandTags.Huawei">{{ EBrandTags.Huawei }}</option>
         <option :value="EBrandTags.Samsung">{{ EBrandTags.Samsung }}</option>
@@ -39,11 +40,22 @@
         <option :value="EColorTags.White">{{ EColorTags.White }}</option>
         <option :value="EColorTags.Yellow">{{ EColorTags.Yellow }}</option>
       </select>
+      </div>
+
+      <div class="input-wrapper">
+        <input type="file" @change="showcaseUpload" accept="image/png, image/jpg" class="input-field" required>
+        <!-- <span>Showcase Image</span> -->
+      </div>
+      <div class="input-wrapper">
+        <input type="file" @change="catalogUpload" accept="image/png, image/jpg" class="input-field" required multiple>
+        <!-- <span>Showcase Image</span> -->
+      </div>
+
       <div class="add-product-btn-wrapper" @click="addProduct()" @mouseenter="scrambleWordEffect(addProductBtn!)">
-          <NuxtLink class="add-product-btn">
-            <span data-value="Add Product" ref="add-product-btn-text">Add Product</span>
-          </NuxtLink>
-        </div>
+        <NuxtLink class="add-product-btn">
+          <span data-value="Add Product" ref="add-product-btn-text">Add Product</span>
+        </NuxtLink>
+      </div>
     </form>
   </div>
 </template>
@@ -64,12 +76,50 @@ const form = ref({
   price: 0,
   brand: EBrandTags.Iphone,
   storage: EStorageTags.GB128,
-  color: EColorTags.Black
+  color: EColorTags.Black,
 })
+
+const showcaseFile = ref<File | null>(null)
+const catalogFiles = ref<FileList | null>(null)
+
+function showcaseUpload(event: Event) {
+  const target = event.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (file) {
+    showcaseFile.value = file
+  }
+}
+
+function catalogUpload(event: Event) {
+  const target = event.target as HTMLInputElement
+  const files = target.files
+  if (files) {
+    catalogFiles.value = files
+  }
+}
 
 
 async function addProduct() {
-  const response = await api.post('/product', form.value)
+  const data = new FormData()
+  data.append('name', form.value.name)
+  data.append('description', form.value.description)
+  data.append('price', form.value.price.toString())
+  data.append('brand', form.value.brand)
+  data.append('storage', form.value.storage)
+  data.append('color', form.value.color)
+  data.append('showcaseImage', showcaseFile.value!)
+  if (catalogFiles.value) {
+    for (let i = 0; i < catalogFiles.value.length; i++) {
+      data.append('catalogImages', catalogFiles.value![i])
+    }
+  }
+
+  const response = await api.post('/products', data, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+  console.log(response)
 }
 </script>
 

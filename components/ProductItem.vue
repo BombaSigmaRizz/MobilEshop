@@ -1,7 +1,7 @@
 <template>
   <div class="product-wrapper" @click="router.push(`/product/${props.desc.id}`)">
     <div class="product-image">
-      <img :src="props.desc.images[0]" alt="product.name">
+      <img :src="`/api/uploads/${desc.showcaseImage}`" alt="image">
     </div>
     <div class="product-info">
       <h2>{{ props.desc.name }}</h2>  
@@ -12,13 +12,15 @@
 </template>
 
 <script setup lang="ts">
+import type { IProduct } from '~/types/types';
+
+const api = useApi()
+
 const router = useRouter()
 
 const props = defineProps<{
   desc: IProduct
 }>()
-
-import type { IProduct } from '~/types/types';
 </script>
 
 <style scoped lang="scss">

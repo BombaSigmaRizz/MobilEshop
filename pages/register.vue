@@ -4,15 +4,15 @@
       <h1>Register</h1>
       <span class="error-msg" v-for="msg in errorMessages" v-if="errorMessages">{{ msg }}</span>
       <form @submit.prevent="register()" class="register-form">
-        <div class="input-field">
+        <div class="input-wrapper">
           <input type="text" required v-model="form.name" />
           <span>Name</span>
         </div>
-        <div class="input-field">
+        <div class="input-wrapper">
           <input type="text" required v-model="form.email" />
           <span>Email</span>
         </div>
-        <div class="input-field">
+        <div class="input-wrapper">
           <input type="password" required v-model="form.password" />
           <span>Password</span>
         </div>
@@ -112,7 +112,7 @@ async function register() {
   color: red;
 }
 
-.input-field {
+.input-wrapper {
   width: 90%;
   position: relative;
   margin-bottom: 2em;
@@ -129,14 +129,14 @@ input {
     transition: all 0.3s;
 }
 
-.input-field input:focus ~ span,
-.input-field input:valid ~ span {
+.input-wrapper input:focus ~ span,
+.input-wrapper input:valid ~ span {
   color: var(--border-light);
   font-size: 0.7em;
   transform: translateY(-20px);
 }
 
-.input-field span {
+.input-wrapper span {
   position: absolute;
   left: 0;
   font-size: 1em;

@@ -32,19 +32,19 @@
       <div class="contact-form">
         <form ref="form">
           <h2>Send us message</h2>
-          <div class="input-box">
+          <div class="input-wrapper">
             <input type="text" name="" required>
             <span>Full Name</span>
           </div>
-          <div class="input-box">
+          <div class="input-wrapper">
             <input type="text" name="" required>
             <span>Email</span>
           </div>
-          <div class="input-box">
+          <div class="input-wrapper">
             <textarea required></textarea>
             <span>Type your message...</span>
           </div>
-          <div class="input-box">
+          <div class="input-wrapper">
             <div class="contact-btn-wrapper" @click="submit()" @mouseenter="scrambleWordEffect(contactBtnText!)">
               <NuxtLink class="contact-btn">
                 <span data-value="Send" ref="contact-btn-text">Send</span>
@@ -155,15 +155,15 @@ function submit() {
   font-weight: 700;
 }
 
-.contact-form .input-box {
+.contact-form .input-wrapper {
   position: relative;
   width: 100%;
   margin-top: 2.4rem;
 
 }
 
-.contact-form .input-box input,
-.contact-form .input-box textarea {
+.contact-form .input-wrapper input,
+.contact-form .input-wrapper textarea {
   width: 100%;
   padding: 5px 0;
   font-size: 1.3rem;
@@ -176,7 +176,7 @@ function submit() {
   color: #ffffff;
 }
 
-.contact-form .input-box span {
+.contact-form .input-wrapper span {
   position: absolute;
   left: 0;
   padding: 5px 0;
@@ -187,10 +187,10 @@ function submit() {
   color:#ffffff;
 }
 
-.contact-form .input-box input:focus ~ span,
-.contact-form .input-box input:valid ~ span,
-.contact-form .input-box textarea:focus ~ span,
-.contact-form .input-box textarea:valid ~ span {
+.contact-form .input-wrapper input:focus ~ span,
+.contact-form .input-wrapper input:valid ~ span,
+.contact-form .input-wrapper textarea:focus ~ span,
+.contact-form .input-wrapper textarea:valid ~ span {
   color: var(--border-light);
   font-size: 0.7em;
   transform: translateY(-20px);
