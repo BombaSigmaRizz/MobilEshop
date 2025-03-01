@@ -33,15 +33,15 @@
         <form @submit.prevent="submitForm">
           <h2>Send us message</h2>
           <div class="input-wrapper">
-            <input type="text" name="" required>
+            <input type="text" v-model="name" required>
             <span>Full Name</span>
           </div>
           <div class="input-wrapper">
-            <input type="text" name="" required>
+            <input type="text" v-model="email" required>
             <span>Email</span>
           </div>
           <div class="input-wrapper">
-            <textarea required></textarea>
+            <textarea required v-model="message"></textarea>
             <span>Type your message...</span>
           </div>
           <div class="input-wrapper">
