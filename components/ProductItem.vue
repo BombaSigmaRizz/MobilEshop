@@ -30,15 +30,16 @@ const props = defineProps<{
   flex-direction: column;
   color: var(--text);
   border-radius: 1rem;
-  // overflow: hidden;
   padding: 1rem;
   gap: 1rem;
-  transition: scale 0.4s ease;
+  transition: scale 0.2s ease;
   box-sizing: border-box;
+  border: 2px solid transparent;
+  cursor: pointer;
 
   &:hover {
     border: 2px solid var(--border-highlight);
-    scale: 1.05;
+    scale: 1.03;
   }
 }
 
@@ -59,6 +60,7 @@ const props = defineProps<{
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
+  text-align: center;
 
   h2 {
     font-size: 1.5rem;

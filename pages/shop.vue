@@ -20,6 +20,6 @@ definePageMeta({
 <style scoped lang="scss">
 .shop-container {
   height: 100%;
-  padding-left: 20em;
+  padding-left: 16rem;
 }
 </style>

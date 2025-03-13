@@ -22,17 +22,21 @@ const filteredProductList = computed(() => {
 })
 
 onBeforeMount(async () => {
-  const response = await api.get<IProduct[]>('/products')
-  console.log(response)
-  productList.value = response
+  try {
+    const response = await api.get<IProduct[]>('/products')
+    productList.value = response
+  }
+  catch (error) {
+    console.error(error)
+  }
 })
 </script>
 
 <style scoped lang="scss">
 .product-list-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-  grid-auto-rows: 20rem;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  grid-auto-rows: clamp(35vh, 25rem, 80vh);
   gap: 1.5rem;
   padding: 2rem; 
   background: var(--bg0);

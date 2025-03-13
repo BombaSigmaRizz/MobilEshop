@@ -28,7 +28,7 @@ const search = defineModel('search', {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 20em;
+  width: 16rem;
   height: calc(100vh - 3.2rem);
   color: var(--text);
   z-index: 100;
