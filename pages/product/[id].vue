@@ -1,31 +1,40 @@
 <template>
   <div class="product-page">
-    <div class="product-content">
+    <div class="product-info">
       <div class="product-image-wrapper">
-        <img :src="`/api/uploads/${product?.catalogImages[currentImage]}`" alt="image" />
+        <img v-if="product" :src="`/api/uploads/${product.catalogImages[currentImage]}`" alt="image" />
         <button class="button-back" @click="currentImage === 0 ? currentImage = product?.catalogImages.length! - 1 : currentImage--"><</button>
         <button class="button-forward" @click="currentImage === product?.catalogImages.length! - 1 ? currentImage = 0 : currentImage++">></button>
       </div>
       <h1 class="name">{{ product?.name }}</h1>
       <p>{{ product?.description }}</p>
-      {{ product?.color }}
+      <p>{{ product?.color }}</p>
+    </div>
+    <div class="reviews">
+      <h2>Reviews</h2>
+      <p v-if="!reviews">There are no reviews yet</p>
+      <div class="review" v-for="review in reviews" :key="review.id">
+        <p>{{ review.name }}</p>
+        <p>{{ review.content }}</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { type IProduct } from '~/types/types';
+import { type IProduct, type IReview } from '~/types/types';
 const route = useRoute()
 const api = useApi()
 
 const product = ref<IProduct | undefined>(undefined)
+const reviews = ref<IReview[]>([])
 
 const currentImage = ref<number>(0)
 
 onBeforeMount(async () => {
   try {
     product.value = await api.get<IProduct>(`/products/${route.params.id}`)
-    console.log(product.value.catalogImages)
+    reviews.value = await api.get<IReview[]>(`/products/${route.params.id}/reviews`)
   } catch (error) {
     console.error(error)
   }
@@ -38,13 +47,15 @@ definePageMeta({
 
 <style scoped lang="scss">
 .product-page {
-  height: 100%;
   color: var(--text);
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
-.product-content {
+.product-info {
   width: min(60rem, 90%);
   background-color: var(--bg1);
 }
@@ -94,5 +105,14 @@ definePageMeta({
   border-radius: 50%;
   font-size: 1.5rem;
   z-index: 100;
+}
+
+.reviews {
+  text-align: center;
+}
+
+.review {
+  min-height: 3rem;
+  color: var(--text);
 }
 </style>

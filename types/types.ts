@@ -40,3 +40,10 @@ export interface IProduct {
   storage: EStorageTags;
   color: EColorTags;
 }
+
+export interface IReview {
+  id: number;
+  productId: number;
+  name: string;
+  content: string;
+}

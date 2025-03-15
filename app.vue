@@ -16,7 +16,7 @@
   box-sizing: border-box;
   background-color: var(--bg0);
   width: 100%;
-  height: calc(100vh - 3.2rem);
+  min-height: calc(100vh - 3.2rem);
 }
 
 .page-enter-active,
