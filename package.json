@@ -13,15 +13,13 @@
     "@nuxt/icon": "1.10.0",
     "@nuxt/image": "1.8.1",
     "@pinia/nuxt": "0.9.0",
-    "@vueuse/core": "^12.0.0",
+    "@vueuse/core": "^12.8.2",
     "@vueuse/nuxt": "12.0.0",
-    "axios": "^1.7.9",
-    "nuxt": "^3.14.1592",
-    "pinia": "^2.3.0",
-    "pnpm": "^10.4.1",
-    "sass": "^1.82.0",
-    "vue": "latest",
-    "vue-router": "latest"
+    "axios": "^1.8.3",
+    "nuxt": "^3.16.0",
+    "pnpm": "^10.6.4",
+    "sass": "^1.86.0",
+    "vue": "latest"
   },
   "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab"
 }

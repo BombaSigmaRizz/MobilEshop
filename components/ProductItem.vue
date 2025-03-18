@@ -1,7 +1,7 @@
 <template>
   <div class="product-wrapper" @click="router.push(`/product/${props.desc.id}`)">
     <div class="product-image">
-      <img :src="`/api/uploads/${desc.showcaseImage}`" alt="image">
+      <img :src="`/api/uploads/${desc.showcaseImage}`" width="250" height="250" alt="image">
     </div>
     <div class="product-info">
       <h2>{{ props.desc.name }}</h2>  
@@ -49,7 +49,7 @@ const props = defineProps<{
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     // border-radius: 1rem 1rem 0 0;
   }
 }
