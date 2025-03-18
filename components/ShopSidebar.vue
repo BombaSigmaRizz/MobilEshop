@@ -24,7 +24,9 @@ const search = defineModel('search', {
 <style scoped lang="scss">
 .shop-sidebar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
   position: fixed;
   bottom: 0;
   left: 0;
@@ -37,12 +39,42 @@ const search = defineModel('search', {
 }
 
 .add-product-wrapper {
-  width: 10em;
-  height: 3em;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 10rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 2rem;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, var(--border-highlight), var(--contrast));
+    width: 100%;
+    height: 100%;
+    clip-path: circle(0%);
+    transition: clip-path 0.3s;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    clip-path: circle(100%);
+  }
 
   a {
     text-decoration: none;
     color: var(--text);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -52,26 +84,26 @@ const search = defineModel('search', {
 
 .search-icon {
   position: absolute;
-  left: 1em;
-  top: 1.1em;
+  left: 1.5rem;
+  top: 1.55rem;
 }
 
 .search-bar {
-  height: 2.5em;
+  height: 2.5rem;
   border: none;
   outline: none;
-  margin: 1em;
-  border-radius: 2em;
-  padding: 0.1em 0.2em 0.1em 3em;
+  margin: 1rem;
+  border-radius: 2rem;
+  padding: 0.1rem 0.2rem 0.1rem 3rem;
   box-sizing: border-box;
   background-color: var(--bg1);
   color: var(--text);
-  font-size: 1em;
-  width: 8em;
+  font-size: 1rem;
+  width: 8rem;
   transition: width 0.3s;
 
   &:focus, &:not(:placeholder-shown) {
-    width: 15em;
+    width: 15rem;
   }
 }
 </style>

@@ -65,7 +65,7 @@ async function login() {
 .login-page {
   color: var(--text);
   display: flex;
-  height: 100%;
+  height: calc(100vh - 3.2rem);
   align-items: center;
   justify-content: center;
   flex-flow: column;

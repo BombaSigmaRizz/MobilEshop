@@ -1,6 +1,5 @@
 <template>
   <div class="account-page">
-    HI
     <button @click="auth.logout(); navigateTo('/')">GAY</button>
   </div>
 </template>

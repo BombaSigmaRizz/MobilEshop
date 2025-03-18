@@ -46,4 +46,5 @@ export interface IReview {
   productId: number;
   name: string;
   content: string;
+  rating: number;
 }

@@ -7,15 +7,20 @@
         <button class="button-forward" @click="currentImage === product?.catalogImages.length! - 1 ? currentImage = 0 : currentImage++">></button>
       </div>
       <h1 class="name">{{ product?.name }}</h1>
-      <p>{{ product?.description }}</p>
-      <p>{{ product?.color }}</p>
+      <p class="desc">{{ product?.description }}</p>
+      <p class="color">{{ product?.color }}</p>
+      <button class="add-to-basket" @click="addToBasket">Add to basket</button>
     </div>
     <div class="reviews">
-      <h2>Reviews</h2>
-      <p v-if="!reviews">There are no reviews yet</p>
-      <div class="review" v-for="review in reviews" :key="review.id">
-        <p>{{ review.name }}</p>
-        <p>{{ review.content }}</p>
+      <h1>Reviews</h1>
+      <ReviewList v-if="product" :productId="product.id" />
+      <div class="add-review">
+        <form @submit.prevent="addReview">
+          <input type="text" v-model="name" placeholder="Name" required />
+          <input type="text" v-model="content" placeholder="Content" required />
+          <input type="number" v-model="rating" placeholder="Rating" required />
+          <button type="submit">Add review</button>
+        </form>
       </div>
     </div>
   </div>
@@ -30,6 +35,39 @@ const product = ref<IProduct | undefined>(undefined)
 const reviews = ref<IReview[]>([])
 
 const currentImage = ref<number>(0)
+
+const name = ref('')
+const content = ref('')
+const rating = ref(0)
+
+async function addReview() {
+  if (!name || !content || !rating) return
+
+  try {
+    const response = await api.post<IReview>(`/products/${route.params.id}/reviews`, {
+      name: name.value,
+      productId: route.params.id,
+      content: content.value,
+      rating: rating.value
+    })
+
+    reviews.value = await api.get<IReview[]>(`/products/${route.params.id}/reviews`)
+  }
+  catch (error) {
+    console.error(error)
+  }
+}
+
+function addToBasket() {
+  console.log('Added to basket')
+  try {
+    api.post(`/basket`, {
+      productId: product.value?.id
+    })
+  } catch (error) {
+    console.error(error)
+  }
+}
 
 onBeforeMount(async () => {
   try {
@@ -56,7 +94,7 @@ definePageMeta({
 }
 
 .product-info {
-  width: min(60rem, 90%);
+  width: min(80rem, 90%);
   background-color: var(--bg1);
 }
 
@@ -108,11 +146,22 @@ definePageMeta({
 }
 
 .reviews {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.reviews h1 {
+  font-size: 2rem;
+  font-weight: 700;
   text-align: center;
 }
 
-.review {
-  min-height: 3rem;
-  color: var(--text);
+.avg-rating {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.add-review {
+  margin-top: 2rem;
 }
 </style>

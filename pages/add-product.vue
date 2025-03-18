@@ -13,6 +13,7 @@
         <input type="number" v-model="form.price" class="input-field">
         <span>Product Price</span>
       </div>
+      <span class="tags-span">Tags:</span>
       <div class="input-wrapper">
         <select class="brand-select" v-model="form.brand">
         <option :value="EBrandTags.Iphone">{{ EBrandTags.Iphone }}</option>
@@ -42,13 +43,14 @@
       </select>
       </div>
 
+      <span>Showcase Image</span>
       <div class="input-wrapper">
         <input type="file" @change="showcaseUpload" accept="image/png, image/jpg" class="input-field" required>
-        <!-- <span>Showcase Image</span> -->
       </div>
+
+      <span>Catalog Images</span>
       <div class="input-wrapper">
         <input type="file" @change="catalogUpload" accept="image/png, image/jpg" class="input-field" required multiple>
-        <!-- <span>Showcase Image</span> -->
       </div>
 
       <div class="add-product-btn-wrapper" @click="addProduct()" @mouseenter="scrambleWordEffect(addProductBtn!)">
@@ -134,6 +136,7 @@ async function addProduct() {
   width: 90%;
   position: relative;
   margin-bottom: 2em;
+  margin-top: 0.5rem;
 }
 
 input {

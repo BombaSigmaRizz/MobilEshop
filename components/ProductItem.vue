@@ -30,7 +30,6 @@ const props = defineProps<{
   flex-direction: column;
   color: var(--text);
   border-radius: 1rem;
-  padding: 1rem;
   gap: 1rem;
   transition: scale 0.2s ease;
   box-sizing: border-box;
