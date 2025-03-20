@@ -33,7 +33,6 @@ export interface IProduct {
   name: string;
   price: number;
   description: string;
-  rating: number;
   showcaseImage: string;
   catalogImages: string[];
   brand: EBrandTags;
