@@ -46,7 +46,7 @@ const form = ref({
   password: ''
 })
 
-const WEB3FORMS_ACCESS_KEY = "438b0ebd-b6d3-4842-9ecf-0fd724269021"
+const WEB3FORMS_ACCESS_KEY = "c75af2a0-04ee-49d0-a7ef-f4a438c50a43"
 
 async function register() {
   try {
@@ -78,7 +78,7 @@ async function sendWelcomeEmail(email: string, name: string) {
       access_key: WEB3FORMS_ACCESS_KEY,
       subject: "Welcome to MobilEshop",
       from_name: "MobilEeshop",
-      from_email: "no-reply-ME@gmail.com",
+      from_email: "noreply.meshop@gmail.com",
       to_email: email,
       message: `Hi ${name},<br><br>Welcome to MobilEeshop! Your registration was successful.<br><br>Happy shopping!<br>Best regards,<br>MobilEeshop Co`
     }),
