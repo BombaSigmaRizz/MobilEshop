@@ -34,7 +34,7 @@ onBeforeMount(async () => {
   flex-flow: column;
   color: var(--text);
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 3.2rem);
   background-image: url('../assets/img/page/server-down.png');
   background-repeat: no-repeat;
   background-position: 5% 50%;

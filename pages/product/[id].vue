@@ -1,4 +1,5 @@
 <template>
+  <TempPopup v-if="addedToBasketPopup">Added to basket!</TempPopup>
   <div class="product-page">
     <div class="product-info">
       <div class="product-image-wrapper">
@@ -9,7 +10,7 @@
       <h1 class="name">{{ product?.name }}</h1>
       <p class="desc">{{ product?.description }}</p>
       <p class="color">{{ product?.color }}</p>
-      <button class="add-to-basket" @click="addToBasket">Add to basket</button>
+      <button class="add-to-basket" @click="addToBasket"><span>Add to basket</span></button>
     </div>
     <div class="reviews">
       <h1>Reviews</h1>
@@ -33,6 +34,7 @@ const api = useApi()
 
 const product = ref<IProduct | undefined>(undefined)
 const reviews = ref<IReview[]>([])
+const addedToBasketPopup = ref(false)
 
 const currentImage = ref<number>(0)
 
@@ -58,12 +60,14 @@ async function addReview() {
   }
 }
 
-function addToBasket() {
-  console.log('Added to basket')
+async function addToBasket() {
   try {
     api.post(`/basket`, {
       productId: product.value?.id
     })
+    addedToBasketPopup.value = true
+    await new Promise(resolve => setTimeout(resolve, 2000))
+    addedToBasketPopup.value = false
   } catch (error) {
     console.error(error)
   }
@@ -96,6 +100,7 @@ definePageMeta({
 .product-info {
   width: min(80rem, 90%);
   background-color: var(--bg1);
+  position: relative;
 }
 
 .product-image-wrapper {
@@ -145,6 +150,51 @@ definePageMeta({
   z-index: 100;
 }
 
+.add-to-basket {
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 10rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  background-color: transparent;
+  border: none;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, var(--border-highlight), var(--contrast));
+    width: 100%;
+    height: 100%;
+    clip-path: circle(0%);
+    transition: clip-path 0.3s;
+    z-index: 0;
+  }
+
+  &:hover::before {
+    clip-path: circle(100%);
+  }
+
+  span {
+    text-decoration: none;
+    color: var(--text);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+}
+
 .reviews {
   margin-top: 2rem;
   width: 100%;
@@ -163,5 +213,34 @@ definePageMeta({
 
 .add-review {
   margin-top: 2rem;
+}
+
+.add-review form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 50%;
+  translate: 50%;
+}
+
+.add-review input {
+  height: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: var(--bg1);
+  color: var(--text);
+}
+
+.add-review button {
+  height: 3rem;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: var(--bg1);
+  color: var(--text);
+  cursor: pointer;
 }
 </style>

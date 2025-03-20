@@ -4,9 +4,9 @@
       <img :src="`/api/uploads/${desc.showcaseImage}`" width="250" height="250" alt="image">
     </div>
     <div class="product-info">
-      <h2>{{ props.desc.name }}</h2>  
-      <p>{{ props.desc.description }}</p>
-      <p>{{ props.desc.price }}</p>
+      <span class="name">{{ props.desc.name }}</span>  
+      <span class="desc">{{ props.desc.description }}</span>
+      <span class="price">{{ props.desc.price }}</span>
     </div>
   </div>
 </template>
@@ -35,6 +35,7 @@ const props = defineProps<{
   box-sizing: border-box;
   border: 2px solid transparent;
   cursor: pointer;
+  overflow: hidden;
 
   &:hover {
     border: 2px solid var(--border-highlight);
@@ -60,15 +61,22 @@ const props = defineProps<{
   align-items: center;
   gap: 0.2rem;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 
-  h2 {
+  name {
     font-size: 1.5rem;
     font-weight: 700;
+    display: inline;
+    width: 100%;
   }
 
-  p {
+  desc, .price {
     font-size: 1rem;
     font-weight: 400;
+    display: inline;
+    width: 100%;
   }
 }
 </style>
