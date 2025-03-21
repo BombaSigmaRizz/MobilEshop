@@ -17,9 +17,12 @@
       <ReviewList v-if="product" :productId="product.id" />
       <div class="add-review">
         <form @submit.prevent="addReview">
+          <div>
+            <span class="rating-span">Rating: </span>
+            <input type="number" v-model="rating" placeholder="Rating" required min="0" max="5" />
+          </div>
           <input type="text" v-model="name" placeholder="Name" required />
-          <input type="text" v-model="content" placeholder="Content" required />
-          <input type="number" v-model="rating" placeholder="Rating" required />
+          <input class="rating-content" type="text" v-model="content" placeholder="Content" required />
           <button type="submit">Add review</button>
         </form>
       </div>
@@ -219,8 +222,8 @@ definePageMeta({
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 50%;
-  translate: 50%;
+  width: 35%;
+  translate: 90%;
 }
 
 .add-review input {
@@ -231,6 +234,23 @@ definePageMeta({
   padding: 0.5rem;
   background-color: var(--bg1);
   color: var(--text);
+}
+
+.add-review .rating-span {
+  width: 7rem;
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.add-review .rating-content {
+  height: 4rem;
+  border-radius: 1rem;
+  padding: 0 0.5rem 0 0.5rem;
+}
+
+.add-review input[type="number"] {
+  width: 5rem;
 }
 
 .add-review button {
