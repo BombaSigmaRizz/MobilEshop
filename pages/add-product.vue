@@ -13,6 +13,10 @@
         <input type="number" v-model="form.price" class="input-field">
         <span>Product Price</span>
       </div>
+      <div class="input-wrapper">
+        <input type="number" v-model="form.price" class="input-field">
+        <span>Product Discounted Price</span>
+      </div>
       <span class="tags-span">Tags:</span>
       <div class="input-wrapper">
         <select class="brand-select" v-model="form.brand">
@@ -76,6 +80,7 @@ const form = ref({
   name: '',
   description: '',
   price: 0,
+  discountPrice: -1,
   brand: EBrandTags.Iphone,
   storage: EStorageTags.GB128,
   color: EColorTags.Black,
