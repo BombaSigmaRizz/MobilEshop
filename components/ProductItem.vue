@@ -1,20 +1,21 @@
 <template>
-  <div class="product-wrapper" @click="router.push(`/product/${props.desc.id}`)">
+  <div class="product-wrapper" @click="router.push(`/product/${desc.id}`)">
     <div class="product-image">
       <img :src="`/api/uploads/${desc.showcaseImage}`" width="250" height="250" alt="image">
     </div>
     <div class="product-info">
-      <span class="name">{{ props.desc.name }}</span>  
-      <span class="desc">{{ props.desc.description }}</span>
-      <span class="price">{{ props.desc.price }}</span>
+      <span class="name">{{ desc.name }}</span>  
+      <span class="desc">{{ desc.description }}</span>
+      <div class="prices">
+        <span class="price" :class="{'crossed': desc.discountPrice > -1}">{{ desc.price }}€</span>
+        <span class="price" v-if="desc.discountPrice > -1">{{ desc.discountPrice }}€</span>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import type { IProduct } from '~/types/types';
-
-const api = useApi()
 
 const router = useRouter()
 
@@ -78,5 +79,16 @@ const props = defineProps<{
     display: inline;
     width: 100%;
   }
+}
+
+.prices {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.crossed {
+  text-decoration: line-through;
 }
 </style>

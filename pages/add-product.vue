@@ -14,7 +14,7 @@
         <span>Product Price</span>
       </div>
       <div class="input-wrapper">
-        <input type="number" v-model="form.price" class="input-field">
+        <input type="number" v-model="form.discountPrice" class="input-field">
         <span>Product Discounted Price</span>
       </div>
       <span class="tags-span">Tags:</span>
@@ -111,6 +111,7 @@ async function addProduct() {
   data.append('name', form.value.name)
   data.append('description', form.value.description)
   data.append('price', form.value.price.toString())
+  data.append('discountPrice', form.value.discountPrice.toString())
   data.append('brand', form.value.brand)
   data.append('storage', form.value.storage)
   data.append('color', form.value.color)
