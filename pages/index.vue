@@ -45,7 +45,7 @@ function vhToPixel(vh: number) {
   return vh * document.documentElement.clientHeight
 }
 
-const slogan = randomSlogan()
+const slogan = ref('')
 
 function randomSlogan() {
   const slogans = [
@@ -84,7 +84,6 @@ function themeByScroll() {
 function smoothScrollTo(e: WheelEvent) {
   e.stopPropagation()
   if (Date.now() - lastScroll < 500) return
-  console.log(e.deltaY)
 
   let slide0 = 0
   let slide1 = 0.945
@@ -107,6 +106,7 @@ function smoothScrollTo(e: WheelEvent) {
 }
 
 onMounted( async () => {
+  slogan.value = randomSlogan()
   fadeImage()
   useEventListener('scroll', themeByScroll)
   useEventListener('wheel', smoothScrollTo, { passive: false })

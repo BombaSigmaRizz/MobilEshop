@@ -9,6 +9,8 @@
 
 <script lang="ts" setup>
 
+import { AxiosError } from 'axios'
+
 const router = useRouter()
 const auth = useAuthStore()
 const api = useApi()
@@ -18,11 +20,11 @@ definePageMeta({
 })
 
 onBeforeMount(async () => {
-  const response = await api.get('/api/check')
-  console.log(response)
-  if (response === true) {
+  try {
+    const response = await api.get('/test')
     navigateTo('/')
   }
+  catch (error) {}
 })
 </script>
 
