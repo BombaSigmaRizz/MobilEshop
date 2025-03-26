@@ -36,7 +36,7 @@ onBeforeMount(async () => {
 .product-list-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
-  grid-auto-rows: clamp(35vh, 25rem, 80vh);
+  grid-auto-rows: clamp(35vh, 20rem, 80vh);
   gap: 1.5rem;
   padding: 2rem; 
   background: var(--bg0);

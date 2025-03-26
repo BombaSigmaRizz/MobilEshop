@@ -37,10 +37,6 @@ definePageMeta({
   auth: false
 })
 
-function pixelToVh(px: number) {
-  return 100 / document.documentElement.clientHeight
-}
-
 function vhToPixel(vh: number) {
   return vh * document.documentElement.clientHeight
 }

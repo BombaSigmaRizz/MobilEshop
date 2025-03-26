@@ -46,7 +46,7 @@ const props = defineProps<{
 
 .product-image {
   width: 100%;
-  height: 17rem;
+  aspect-ratio: 1;
 
   img {
     width: 100%;
@@ -62,22 +62,36 @@ const props = defineProps<{
   align-items: center;
   gap: 0.2rem;
   text-align: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
   width: 100%;
 
   .name {
+    margin-left: 0.6rem;
+    text-align: left;
     font-size: 1.5rem;
     font-weight: 700;
-    display: inline;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .desc {
+    width: 100%;
+    margin-left: 0.6rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .desc {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 400;
     width: 100%;
   }
 
-  desc, .price {
+  .price {
+    text-align: center;
     font-size: 1rem;
     font-weight: 400;
-    display: inline;
-    width: 100%;
   }
 }
 
@@ -86,6 +100,7 @@ const props = defineProps<{
   gap: 0.5rem;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .crossed {
