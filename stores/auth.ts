@@ -31,9 +31,7 @@ export const useAuthStore = defineStore('auth', () => {
       if (error instanceof AxiosError && error.response?.status === 401) {
         isLoggedIn.value = false
       }
-      // TODO: catch only if unauthorized error
-      console.log(error)
-      return null
+      user.value = null
     }
   }
 
