@@ -66,7 +66,7 @@ const props = defineProps<{
   text-overflow: ellipsis;
   width: 100%;
 
-  name {
+  .name {
     font-size: 1.5rem;
     font-weight: 700;
     display: inline;
