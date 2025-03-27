@@ -1,6 +1,6 @@
 <template>
   <div class="home" ref="home">
-    <section class="intro">
+    <section ref="sec0" class="intro">
       <div class="slogan-shop">
         <h1 class="slogan">{{ slogan }}</h1>
         <div class="shop-btn-wrapper" @mouseenter="scrambleWordEffect(shopBtnText!)">
@@ -13,19 +13,19 @@
       <div ref="exhibition-img" class="exhibition-img"></div>
     </section>
 
-    <section class="hidden">
+    <section ref="sec1" class="hidden">
       <h1>We Have THE Best Prices</h1>
       <p>Get the best prices on the latest smartphones and accessories.</p>
       <div ref="best-prices-img" class="best-prices-img"></div>
     </section>
 
-    <section class="hidden">
+    <section ref="sec2" class="hidden">
       <h1>Lightning Fast Deliveries!</h1>
       <p>Can't even close the website and the order is delivered.</p>
       <div ref="fast-deliveries-img" class="fast-deliveries-img"></div>
     </section>
 
-    <section class="hidden">
+    <section ref="sec3" class="hidden">
       <h1>Competition is Non-Existent</h1>
       <p>We're simply the best at what we do.</p>
       <div ref="non-existent-img" class="non-existent-img"></div>
@@ -61,6 +61,11 @@ function randomSlogan() {
 const home = useTemplateRef('home')
 const shopBtnText = useTemplateRef('shop-btn-text')
 const newImg = useTemplateRef('exhibition-img')
+const section0 = useTemplateRef('sec0')
+const section1 = useTemplateRef('sec1')
+const section2 = useTemplateRef('sec2')
+const section3 = useTemplateRef('sec3')
+const sections = ref<(HTMLElement | null)[]>([])
 let currentSlide = 0
 let lastScroll = 0
 
@@ -84,27 +89,24 @@ function smoothScrollTo(e: WheelEvent) {
   e.stopPropagation()
   if (Date.now() - lastScroll < 500) return
 
-  let slide0 = 0
-  let slide1 = 0.945
-  let slide2 = 1.945
-  let slide3 = 2.945
-
-  const slidesPos = [slide0, slide1, slide2, slide3]
-
   if (e.deltaY > 0) {
-    if (currentSlide < slidesPos.length - 1) currentSlide++
+    if (currentSlide < sections.value.length - 1) currentSlide++
   } else if (e.deltaY < 0) {
     if (currentSlide > 0) currentSlide--
   } else {
     return
   }
 
-  window.scrollTo(0, vhToPixel(slidesPos[currentSlide]))
+  if (sections.value[currentSlide]) {
+    scrollTo({ top: sections.value[currentSlide]!.getBoundingClientRect().top + window.pageYOffset - 16*3.2, behavior: 'smooth' })
+    console.log('scrolling to', sections.value[currentSlide]!.getBoundingClientRect().top + window.pageYOffset - 16*3.2)
+  }
 
   lastScroll = Date.now()
 }
 
 onMounted( async () => {
+  sections.value = [section0.value, section1.value, section2.value, section3.value]
   slogan.value = randomSlogan()
   fadeImage()
   useEventListener('scroll', themeByScroll)
@@ -119,6 +121,10 @@ onMounted( async () => {
           entry.target.classList.remove('show');
         }
       });
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
     });
 
     const hiddenElements = document.querySelectorAll('.hidden');
