@@ -76,7 +76,7 @@ async function addToBasket() {
   }
 }
 
-onBeforeMount(async () => {
+onMounted(async () => {
   try {
     product.value = await api.get<IProduct>(`/products/${route.params.id}`)
     reviews.value = await api.get<IReview[]>(`/products/${route.params.id}/reviews`)
