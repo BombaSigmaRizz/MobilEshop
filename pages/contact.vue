@@ -116,7 +116,7 @@ async function submitForm() {
     rgb(0 0 0 / 0.19),
     rgb(0 0 0 / 0.94),
     rgb(0 0 0 / 0.19)
-    );
+  );
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

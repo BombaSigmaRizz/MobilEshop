@@ -13,19 +13,22 @@
       <div ref="exhibition-img" class="exhibition-img"></div>
     </section>
 
-    <section class="best-prices">
+    <section class="hidden">
       <h1>We Have THE Best Prices</h1>
       <p>Get the best prices on the latest smartphones and accessories.</p>
+      <div ref="best-prices-img" class="best-prices-img"></div>
     </section>
 
-    <section class="fast-deliveries">
+    <section class="hidden">
       <h1>Lightning Fast Deliveries!</h1>
       <p>Can't even close the website and the order is delivered.</p>
+      <div ref="fast-deliveries-img" class="fast-deliveries-img"></div>
     </section>
 
-    <section class="no-competition">
+    <section class="hidden">
       <h1>Competition is Non-Existent</h1>
       <p>We're simply the best at what we do.</p>
+      <div ref="non-existent-img" class="non-existent-img"></div>
     </section>
   </div>
 </template>
@@ -110,6 +113,23 @@ onMounted( async () => {
   fadeImage()
   useEventListener('scroll', themeByScroll)
   useEventListener('wheel', smoothScrollTo, { passive: false })
+
+  if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+    hiddenElements.forEach((el) => observer.observe(el));
+  } else {
+    console.warn('IntersectionObserver is not supported in this environment.');
+  }
 })
 </script>
 
@@ -146,6 +166,19 @@ section {
   background: radial-gradient(circle at 50% 50%, var(--border) 0%, rgb(224, 224, 224) 1%);
   animation: intro 2s forwards;
   overflow: hidden;
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(20px);
+  transform: translateX(-35rem);
+  transition: all 2.5s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
 }
 
 .slogan-shop {
@@ -217,6 +250,45 @@ section {
   background-size: contain;
   background-repeat: no-repeat;
   opacity: 0;
+}
+
+.best-prices-img {
+  background-image: url('../assets/img/page/indexc.png');
+  width: 55vh;
+  height: 55vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 10rem;
+  opacity: 40%;
+}
+
+.fast-deliveries-img {
+  background-image: url('../assets/img/page/black-lightningc.png');
+  width: 75vh;
+  height: 75vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 17rem;
+  opacity: 60%;
+}
+
+.non-existent-img {
+  background-image: url('../assets/img/page/g404c.png');
+  mask-image: linear-gradient(
+    to left,
+    rgb(0 0 0 / 0.06),
+    rgb(0 0 0 / 1),
+    rgb(0 0 0 / 0.06)
+  );
+  width: 60vh;
+  height: 65vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  left: 3.9rem;
+  opacity: 40%;
 }
 
 @keyframes intro {
