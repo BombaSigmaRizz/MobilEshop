@@ -1,5 +1,6 @@
 <template>
   <div class="product-wrapper" @click="router.push(`/product/${desc.id}`)">
+    <span class="price price-discount" v-if="desc.discountPrice > -1">-{{ Math.round((desc.price - desc.discountPrice) / desc.price * 100) }}%</span>
     <div class="product-image">
       <img :src="`/api/uploads/${desc.showcaseImage}`" width="250" height="250" alt="image">
     </div>
@@ -37,6 +38,7 @@ const props = defineProps<{
   border: 2px solid transparent;
   cursor: pointer;
   overflow: hidden;
+  position: relative;
 
   &:hover {
     border: 2px solid var(--border-highlight);
@@ -93,6 +95,15 @@ const props = defineProps<{
     font-size: 1rem;
     font-weight: 400;
   }
+}
+
+.price-discount {
+  display: inline;
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  color: rgb(255, 72, 72);
+  font-size: 1.1rem;
 }
 
 .prices {
