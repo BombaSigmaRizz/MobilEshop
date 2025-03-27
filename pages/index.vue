@@ -119,12 +119,12 @@ onMounted( async () => {
         } else {
           entry.target.classList.remove('show');
         }
-      });
+      })
     }, {
       root: null,
       rootMargin: '0px',
       threshold: 0.1
-    });
+    })
 
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
