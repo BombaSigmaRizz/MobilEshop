@@ -65,15 +65,16 @@ async function addReview() {
 
 async function addToBasket() {
   try {
-    api.post(`/basket`, {
+    const response = await api.post(`/basket`, {
       productId: product.value?.id
     })
+    if (response) {
+      addedToBasketPopup.value = true
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      addedToBasketPopup.value = false
+    }
   } catch (error) {
     console.error(error)
-  } finally {
-    addedToBasketPopup.value = true
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    addedToBasketPopup.value = false
   }
 }
 
