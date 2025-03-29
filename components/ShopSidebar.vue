@@ -1,7 +1,7 @@
 <template>
   <div class="shop-sidebar">
     <div class="search-wrapper">
-      <input type="text" placeholder="Search" v-model="search" class="search-bar" />
+      <input v-model="data.filterSearchTerm" type="text" placeholder="Search" class="search-bar" />
       <Icon class="search-icon" name="oui:search" size="1.5rem"/>
     </div>
     <div v-show="isAdmin && auth.isLoggedIn" class="add-product-wrapper">
@@ -12,13 +12,10 @@
 
 <script lang="ts" setup>
 const auth = useAuthStore()
+const data = useDataStore()
 
 const isAdmin = computed(() => auth.user?.isAdmin)
 
-const search = defineModel('search', {
-  type: String,
-  default: ''
-})
 </script>
 
 <style scoped lang="scss">

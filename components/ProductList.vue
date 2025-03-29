@@ -9,27 +9,13 @@ import { type IProduct, EBrandTags, EColorTags, EStorageTags } from '~/types/typ
 
 const api = useApi()
 
-const search = defineModel('search', {
-  type: String,
-  default: ''
-})
+const data = useDataStore()
 
+const filteredProductList = computed(() => data.filteredProductList)
 
-const productList = ref<IProduct[]>([])
-
-const filteredProductList = computed(() => {
-  return productList.value.filter(product => product.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()))
-})
-
-onBeforeMount(async () => {
-  try {
-    const response = await api.get<IProduct[]>('/products')
-    productList.value = response
-  }
-  catch (error) {
-    console.error(error)
-  }
-})
+const props = defineProps<{
+  productList: IProduct[]
+}>()
 </script>
 
 <style scoped lang="scss">
