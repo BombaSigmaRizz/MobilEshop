@@ -68,11 +68,12 @@ async function addToBasket() {
     api.post(`/basket`, {
       productId: product.value?.id
     })
+  } catch (error) {
+    console.error(error)
+  } finally {
     addedToBasketPopup.value = true
     await new Promise(resolve => setTimeout(resolve, 2000))
     addedToBasketPopup.value = false
-  } catch (error) {
-    console.error(error)
   }
 }
 
