@@ -46,12 +46,9 @@ const form = ref({
   password: ''
 })
 
-const WEB3FORMS_ACCESS_KEY = "c75af2a0-04ee-49d0-a7ef-f4a438c50a43"
-
 async function register() {
   try {
     await auth.register(form.value)
-    await sendWelcomeEmail(form.value.email, form.value.name)
     navigateTo('/')
   } catch (error) {
     console.log(error)
@@ -64,28 +61,6 @@ async function register() {
         errorMessages.value[i] = error.response?.data.errors[i].message
       }
     }
-  }
-}
-
-async function sendWelcomeEmail(email: string, name: string) {
-  const response = await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      access_key: WEB3FORMS_ACCESS_KEY,
-      subject: "Welcome to MobilEshop",
-      from_name: "MobilEeshop",
-      from_email: "noreply.meshop@gmail.com",
-      to_email: email,
-      message: `Hi ${name},<br><br>Welcome to MobilEeshop! Your registration was successful.<br><br>Happy shopping!<br>Best regards,<br>MobilEeshop Co`
-    }),
-  })
-  const result = await response.json()
-  if (!result.success) {
-    console.error("Failed to send welcome email: " + result.message)
   }
 }
 </script>

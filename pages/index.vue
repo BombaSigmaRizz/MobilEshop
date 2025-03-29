@@ -141,6 +141,7 @@ onMounted( async () => {
   background: var(--bg0);
   transition: all 0.4s ease;
   color: var(--text);
+  overflow: hidden;
 }
 
 section {
