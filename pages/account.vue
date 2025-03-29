@@ -15,7 +15,7 @@ const router = useRouter()
   top: 45rem;
   left: 55.1rem;
   background: rgb(114, 8, 236);
-  box-shadow: 0 0 25px rgb(114, 8, 236);
+  box-shadow: 0 0 95px rgb(114, 8, 236);
   padding: 10px 20px;
   border: none;
   font-size: 17px;
