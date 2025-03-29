@@ -15,13 +15,13 @@
 
     <section ref="sec1" class="hidden">
       <h1>We Have THE Best Prices</h1>
-      <p>Get the best prices on the latest smartphones and accessories.</p>
+      <p>Get the best prices on the latest smartphones with many variations.</p>
       <div ref="best-prices-img" class="best-prices-img"></div>
     </section>
 
     <section ref="sec2" class="hidden">
       <h1>Lightning Fast Deliveries!</h1>
-      <p>Can't even close the website and the order is delivered.</p>
+      <p>Wanna know what's fast? Then don't hesitate to order.</p>
       <div ref="fast-deliveries-img" class="fast-deliveries-img"></div>
     </section>
 
@@ -174,7 +174,7 @@ section {
   opacity: 0;
   filter: blur(20px);
   transform: translateX(-35rem);
-  transition: all 2.5s;
+  transition: all 2.3s;
 }
 
 .show {
@@ -256,24 +256,39 @@ section {
 
 .best-prices-img {
   background-image: url('../assets/img/page/indexc.png');
-  width: 55vh;
-  height: 55vh;
+  rotate: 5deg;
+  mask-image: linear-gradient(
+    to left,
+    rgb(0 0 0 / 0.01),
+    rgb(0 0 0 / 0.5),
+    rgb(0 0 0 / 0.01)
+  );
+  mask-image: linear-gradient(
+    rgb(0 0 0 / 0.01),
+    rgb(0 0 0 / 1),
+    rgb(0 0 0 / 0.25)
+  );
+  width: 97.5vh;
+  height: 96vh;
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  left: 10rem;
-  opacity: 40%;
+  top: 0.3rem;
+  left: -3.9rem;
+  opacity: 60%;
 }
 
 .fast-deliveries-img {
   background-image: url('../assets/img/page/black-lightningc.png');
-  width: 75vh;
-  height: 75vh;
+  rotate:  -45deg;
+  width: 93vh;
+  height: 93.2vh;
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  left: 17rem;
-  opacity: 60%;
+  left: 5.15rem;
+  top: -7.38rem;
+  opacity: 62%;
 }
 
 .non-existent-img {
@@ -284,12 +299,13 @@ section {
     rgb(0 0 0 / 1),
     rgb(0 0 0 / 0.06)
   );
-  width: 60vh;
-  height: 65vh;
+  rotate: -3deg;
+  width: 115vh;
+  height: 115vh;
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  left: 3.9rem;
+  left: -7rem;
   opacity: 40%;
 }
 
