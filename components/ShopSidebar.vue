@@ -1,8 +1,41 @@
 <template>
   <div class="shop-sidebar">
-    <div class="search-wrapper">
-      <input v-model="data.filterSearchTerm" type="text" placeholder="Search" class="search-bar" />
-      <Icon class="search-icon" name="oui:search" size="1.5rem"/>
+    <div class="filtering">
+      <div class="search-wrapper">
+        <input v-model="data.filterSearchTerm" type="text" placeholder="Search" class="search-bar" />
+        <Icon class="search-icon" name="oui:search" size="1.5rem"/>
+      </div>
+      <div class="search-tags">
+        <select class="search-tag-brand" v-model="data.filterBrand">
+          <option value="">All</option>
+          <option :value="EBrandTags.Iphone">{{ EBrandTags.Iphone }}</option>
+          <option :value="EBrandTags.Huawei">{{ EBrandTags.Huawei }}</option>
+          <option :value="EBrandTags.Samsung">{{ EBrandTags.Samsung }}</option>
+          <option :value="EBrandTags.Xiaomi">{{ EBrandTags.Xiaomi }}</option>
+        </select>
+        <select class="search-tag-color" v-model="data.filterColor">
+          <option value="">All</option>
+          <option :value="EColorTags.Black">{{ EColorTags.Black }}</option>
+          <option :value="EColorTags.Blue">{{ EColorTags.Blue }}</option>
+          <option :value="EColorTags.Brown">{{ EColorTags.Brown }}</option>
+          <option :value="EColorTags.Cyan">{{ EColorTags.Cyan }}</option>
+          <option :value="EColorTags.Gray">{{ EColorTags.Gray }}</option>
+          <option :value="EColorTags.Green">{{ EColorTags.Green }}</option>
+          <option :value="EColorTags.Orange">{{ EColorTags.Orange }}</option>
+          <option :value="EColorTags.Pink">{{ EColorTags.Pink }}</option>
+          <option :value="EColorTags.Purple">{{ EColorTags.Purple }}</option>
+          <option :value="EColorTags.Red">{{ EColorTags.Red }}</option>
+          <option :value="EColorTags.White">{{ EColorTags.White }}</option>
+          <option :value="EColorTags.Yellow">{{ EColorTags.Yellow }}</option>
+        </select>
+        <select class="search-tag-storage" v-model="data.filterStorage">
+          <option value="">All</option>
+          <option :value="EStorageTags.GB128">{{ EStorageTags.GB128 }}</option>
+          <option :value="EStorageTags.GB256">{{ EStorageTags.GB256 }}</option>
+          <option :value="EStorageTags.GB512">{{ EStorageTags.GB512 }}</option>
+          <option :value="EStorageTags.TB1">{{ EStorageTags.TB1 }}</option>
+        </select>
+      </div>
     </div>
     <div v-show="isAdmin && auth.isLoggedIn" class="add-product-wrapper">
       <NuxtLink to="/add-product">Add Product</NuxtLink>
@@ -11,6 +44,7 @@
 </template>
 
 <script lang="ts" setup>
+import { EBrandTags, EColorTags, EStorageTags } from '~/types/types'
 const auth = useAuthStore()
 const data = useDataStore()
 
