@@ -8,7 +8,6 @@ export const useDataStore = defineStore('data', () => {
   const filterCategory = ref<string>('')
 
   const filteredProductList = computed<IProduct[]>(() => {
-    console.log(filterDiscounted.value)
     return productList.value.filter((product) => {
       const matchesSearchTerm = product.name.toLowerCase().includes(filterSearchTerm.value.toLowerCase())
       const matchesDiscounted = filterDiscounted.value ? product.discountPrice > -1 : true

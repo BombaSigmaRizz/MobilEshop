@@ -1,6 +1,6 @@
 <template>
-  <TempPopup v-if="addedToBasketPopup">Added to basket!</TempPopup>
   <div class="product-page">
+    <TempPopup v-if="addedToBasketPopup">Added to basket!</TempPopup>
     <div class="product-info">
       <div class="product-image-wrapper">
         <img v-if="product" :src="`/api/uploads/${product.catalogImages[currentImage]}`" alt="image" />
