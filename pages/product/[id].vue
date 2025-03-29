@@ -31,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import type { AxiosResponse } from 'axios';
 import { type IProduct, type IReview } from '~/types/types';
 const route = useRoute()
 const api = useApi()
@@ -65,10 +66,10 @@ async function addReview() {
 
 async function addToBasket() {
   try {
-    const response = await api.post(`/basket`, {
+    const response: AxiosResponse = await api.post(`/basket`, {
       productId: product.value?.id
     })
-    if (response) {
+    if (response.status === 200) {
       addedToBasketPopup.value = true
       await new Promise(resolve => setTimeout(resolve, 2000))
       addedToBasketPopup.value = false

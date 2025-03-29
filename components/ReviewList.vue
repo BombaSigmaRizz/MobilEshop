@@ -25,7 +25,6 @@ onBeforeMount(async () => {
   try {
     const response = await api.get<IReview[]>(`/products/${props.productId}/reviews`)
     reviewList.value = response
-    console.log(reviewList.value)
   }
   catch (error) {
     console.error(error)
