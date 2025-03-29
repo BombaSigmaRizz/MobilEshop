@@ -5,14 +5,20 @@ export const useDataStore = defineStore('data', () => {
 
   const filterSearchTerm = ref<string>('')
   const filterDiscounted = ref<boolean>(false)
-  const filterCategory = ref<string>('')
+  const filterBrand = ref<string>('')
+  const filterColor = ref<string>('')
+  const filterStorage = ref<string>('')
 
   const filteredProductList = computed<IProduct[]>(() => {
+    console.log(filterBrand.value)
     return productList.value.filter((product) => {
       const matchesSearchTerm = product.name.toLowerCase().includes(filterSearchTerm.value.toLowerCase())
       const matchesDiscounted = filterDiscounted.value ? product.discountPrice > -1 : true
+      const matchesBrand = filterBrand.value ? product.brand == filterBrand.value : true
+      const matchesColor = filterColor.value ? product.color == filterColor.value : true
+      const matchesStorage = filterStorage.value ? product.storage == filterStorage.value : true
 
-      return matchesSearchTerm && matchesDiscounted
+      return matchesSearchTerm && matchesDiscounted && matchesBrand && matchesColor && matchesStorage
     })
   })
 
@@ -32,7 +38,9 @@ export const useDataStore = defineStore('data', () => {
     productList,
     filterSearchTerm,
     filterDiscounted,
-    filterCategory,
+    filterBrand,
+    filterColor,
+    filterStorage,
     filteredProductList,
     load,
   }
