@@ -1,15 +1,19 @@
 <template>
   <div class="product-page">
     <TempPopup v-if="addedToBasketPopup">Added to basket!</TempPopup>
-    <div class="product-info">
+    <div class="product-showcase">
       <div class="product-image-wrapper">
         <img v-if="product" :src="`/api/uploads/${product.catalogImages[currentImage]}`" alt="image" />
         <button class="button-back" @click="currentImage === 0 ? currentImage = product?.catalogImages.length! - 1 : currentImage--"><</button>
         <button class="button-forward" @click="currentImage === product?.catalogImages.length! - 1 ? currentImage = 0 : currentImage++">></button>
       </div>
-      <h1 class="name">{{ product?.name }}</h1>
-      <p class="desc">{{ product?.description }}</p>
-      <p class="color">{{ product?.color }}</p>
+      <div class="product-desc">
+        <h1 class="name">{{ product?.name }}</h1>
+        <span class="desc">{{ product?.description }}</span>
+        <span class="color">Color: {{ product?.color }}</span>
+        <span class="storage">Storage Amount: {{ product?.storage }}</span>
+      </div>
+      <span class="price">{{ product?.price }}€</span>
       <button class="add-to-basket" @click="addToBasket"><span>Add to basket</span></button>
     </div>
     <div class="reviews">
@@ -103,15 +107,40 @@ definePageMeta({
   overflow-y: auto;
 }
 
-.product-info {
+.product-showcase {
   width: min(80rem, 90%);
   background-color: var(--bg1);
   position: relative;
+  display: flex;
+}
+
+.product-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  gap: 1rem;
+  width: 50%;
+  padding: 2rem;
+  color: var(--text);
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.price {
+  position: absolute;
+  bottom: 4.4rem;
+  right: 14rem;
 }
 
 .product-image-wrapper {
   position: relative;
-  width: 100%;
+  width: 50%;
   height: 40rem;
   display: flex;
   // background-color: var(--bg1);

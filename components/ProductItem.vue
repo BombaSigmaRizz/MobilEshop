@@ -74,6 +74,7 @@ const props = defineProps<{
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-height: 2rem;
   }
 
   .desc {
@@ -81,7 +82,7 @@ const props = defineProps<{
     margin-left: 0.6rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 2.5rem;
+    max-height: 3.5rem;
   }
 
   .desc {
