@@ -4,22 +4,23 @@
       <img draggable="false" src="../assets/img/page/logosigma.png" width="500" height="375" class="logo"></img>
     </div>
     <div class="middle">
-      <NuxtLink class="link" :class="{'active': isActive('index')}" to="/"><span>Home</span></NuxtLink>
+      <NuxtLink @click="data.filterDiscounted = false" class="link" :class="{'active': isActive('index')}" to="/"><span>Home</span></NuxtLink>
       <NuxtLink class="link link-shop" :class="{'active': isActive('shop')}" to="/shop">
-        <span @mouseenter="showShopDropdown()" @mouseleave="hideShopDropdown(); isHoveringShop=false">Shop</span>
-        <div @mouseenter="showShopDropdown()" @mouseleave="hideShopDropdown(); isHoveringShop=false" ref="shop-dropdown" class="shop-dropdown">Discounts</div>
+        <span @click="data.filterDiscounted = false" @mouseenter="showShopDropdown()" @mouseleave="hideShopDropdown()">Shop</span>
+        <div @click="data.filterDiscounted = true" @mouseenter="showShopDropdown()" @mouseleave="hideShopDropdown()" ref="shop-dropdown" class="shop-dropdown">Discounts</div>
       </NuxtLink>
     </div>
     <div class="right">
-      <NuxtLink class="link" :class="{'active': isActive('contact')}" to="/contact"><span>Contact</span></NuxtLink>
-      <NuxtLink class="link" :class="{'active': isActive('account')}" to="/account"><span>Account</span></NuxtLink>
-      <NuxtLink class="link" :class="{'active': isActive('basket')}" to="/basket"><Icon name="ph:basket" size="2.5rem"/></NuxtLink>
+      <NuxtLink class="link" :class="{'active': isActive('contact')}" to="/contact"><span @click="data.filterDiscounted = false">Contact</span></NuxtLink>
+      <NuxtLink class="link" :class="{'active': isActive('account')}" to="/account"><span @click="data.filterDiscounted = false">Account</span></NuxtLink>
+      <NuxtLink class="link" :class="{'active': isActive('basket')}" to="/basket"><Icon @click="data.filterDiscounted = false" name="ph:basket" size="2.5rem"/></NuxtLink>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute()
+const data = useDataStore()
 const shopDropdown = useTemplateRef('shop-dropdown')
 const isHoveringShop = ref(false)
 

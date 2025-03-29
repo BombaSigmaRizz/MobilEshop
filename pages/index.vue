@@ -99,7 +99,6 @@ function smoothScrollTo(e: WheelEvent) {
 
   if (sections.value[currentSlide]) {
     scrollTo({ top: sections.value[currentSlide]!.getBoundingClientRect().top + window.pageYOffset - 16*3.2, behavior: 'smooth' })
-    console.log('scrolling to', sections.value[currentSlide]!.getBoundingClientRect().top + window.pageYOffset - 16*3.2)
   }
 
   lastScroll = Date.now()
@@ -120,12 +119,12 @@ onMounted( async () => {
         } else {
           entry.target.classList.remove('show');
         }
-      });
+      })
     }, {
       root: null,
       rootMargin: '0px',
       threshold: 0.1
-    });
+    })
 
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));

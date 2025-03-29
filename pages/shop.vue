@@ -1,11 +1,12 @@
 <template>
   <div class="shop-container">
-    <ShopSidebar v-model:search="search" />
-    <ProductList v-model:search="search" />
+    <ShopSidebar />
+    <ProductList :product-list="data.productList" />
   </div>
 </template>
 
 <script setup lang="ts">
+const data = useDataStore()
 
 const search = defineModel('search', {
   type: String,
@@ -14,6 +15,10 @@ const search = defineModel('search', {
 
 definePageMeta({
   auth: false
+})
+
+onMounted(async () => {
+  await data.load()
 })
 </script>
 
