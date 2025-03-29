@@ -160,7 +160,7 @@ async function submitForm() {
   width: 55%;
   display: flex;
   flex-direction: column;
-  padding: 0rem 15rem 5rem 0rem;
+  // padding: 0rem 15rem 5rem 0rem;
 }
 
 .contact-container .contact-info .box {
