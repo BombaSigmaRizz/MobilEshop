@@ -3,17 +3,17 @@
     <div class="register-container">
       <h1>Register</h1>
       <span class="error-msg" v-for="msg in errorMessages" v-if="errorMessages">{{ msg }}</span>
-      <form @submit.prevent="register()" class="register-form">
+      <form ref="registerForm" @submit.prevent="registerAndSendEmail" class="register-form">
         <div class="input-wrapper">
-          <input type="text" required v-model="form.name" />
+          <input type="text" id="name" required v-model="form.name" />
           <span>Name</span>
         </div>
         <div class="input-wrapper">
-          <input type="text" required v-model="form.email" />
+          <input type="text" id="email" required v-model="form.email" />
           <span>Email</span>
         </div>
         <div class="input-wrapper">
-          <input type="password" required v-model="form.password" />
+          <input type="password" id="password" required v-model="form.password" />
           <span>Password</span>
         </div>
         <div class="register-btn-wrapper" @mouseenter="scrambleWordEffect(registerBtnText!)">
@@ -31,6 +31,7 @@
 <script setup lang="ts">
 import { AxiosError } from 'axios'
 import { ref } from 'vue'
+import emailjs from '@emailjs/browser'
 
 definePageMeta({
   auth: false
@@ -46,9 +47,12 @@ const form = ref({
   password: ''
 })
 
-async function register() {
+const registerForm = ref<HTMLFormElement | null>(null)
+
+async function registerAndSendEmail() {
   try {
     await auth.register(form.value)
+    await sendEmail()
     navigateTo('/')
   } catch (error) {
     console.log(error)
@@ -61,6 +65,36 @@ async function register() {
         errorMessages.value[i] = error.response?.data.errors[i].message
       }
     }
+  }
+}
+
+async function sendEmail() {
+  if (!registerForm.value) return;
+
+  console.log('Form data:', form.value);
+
+  if (!form.value.email) {
+    console.error('Email address is empty. Cannot send email.');
+    return;
+  }
+
+  const templateParams = {
+    to_email: form.value.email, 
+    from_name: form.value.name || 'MeShop', 
+    subject: 'Welcome to MeShop',
+    message: `Hello ${form.value.name}, thank you for registering with us!`,
+  };
+
+  try {
+    await emailjs.send(
+      'service_vimtqiv', 
+      'template_6qjjaqg',
+      templateParams,
+      'QAcUKNabYnZoQtlKU' 
+    );
+    console.log('Email sent successfully!');
+  } catch (error) {
+    console.error('Failed to send email:', error);
   }
 }
 </script>

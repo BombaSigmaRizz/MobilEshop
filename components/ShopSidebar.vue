@@ -6,6 +6,7 @@
         <Icon class="search-icon" name="oui:search" size="1.5rem"/>
       </div>
       <div class="search-tags">
+        <span>Brand:</span>
         <select class="search-tag-brand" v-model="data.filterBrand">
           <option value="">All</option>
           <option :value="EBrandTags.Iphone">{{ EBrandTags.Iphone }}</option>
@@ -13,6 +14,7 @@
           <option :value="EBrandTags.Samsung">{{ EBrandTags.Samsung }}</option>
           <option :value="EBrandTags.Xiaomi">{{ EBrandTags.Xiaomi }}</option>
         </select>
+        <span>Color:</span>
         <select class="search-tag-color" v-model="data.filterColor">
           <option value="">All</option>
           <option :value="EColorTags.Black">{{ EColorTags.Black }}</option>
@@ -28,6 +30,7 @@
           <option :value="EColorTags.White">{{ EColorTags.White }}</option>
           <option :value="EColorTags.Yellow">{{ EColorTags.Yellow }}</option>
         </select>
+        <span>Storage:</span>
         <select class="search-tag-storage" v-model="data.filterStorage">
           <option value="">All</option>
           <option :value="EStorageTags.GB128">{{ EStorageTags.GB128 }}</option>
@@ -53,6 +56,24 @@ const isAdmin = computed(() => auth.user?.isAdmin)
 </script>
 
 <style scoped lang="scss">
+.search-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+select {
+  text-align: left;
+  appearance: none;
+  background-color: var(--bg1);
+  color: var(--text);
+  padding: 0.7rem;
+  border: none;
+  outline: none;
+  border-radius: 0.6rem;
+  line-height: 1.1;
+}
+
 .shop-sidebar {
   display: flex;
   justify-content: space-between;
