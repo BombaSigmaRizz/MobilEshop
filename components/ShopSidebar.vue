@@ -140,6 +140,14 @@ select {
   top: 1.55rem;
 }
 
+.filtering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
 .search-bar {
   height: 2.5rem;
   border: none;
@@ -157,5 +165,13 @@ select {
   &:focus, &:not(:placeholder-shown) {
     width: 15rem;
   }
+}
+
+.search-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  width: 10rem;
 }
 </style>
