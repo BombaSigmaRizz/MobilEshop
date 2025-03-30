@@ -1,6 +1,6 @@
 <template>
   <div class="product-page">
-    <TempPopup v-if="addedToBasketPopup">Added to basket!</TempPopup>
+    <TempPopup v-if="addedToBasketPopup">{{ popupText }}</TempPopup>
     <div class="product-showcase">
       <div class="product-image-wrapper">
         <img v-if="product" :src="`/api/uploads/${product.catalogImages[currentImage]}`" alt="image" />
@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import type { AxiosResponse } from 'axios';
+import { AxiosError, type AxiosResponse } from 'axios';
 import { type IProduct, type IReview } from '~/types/types';
 const route = useRoute()
 const api = useApi()
@@ -43,6 +43,8 @@ const api = useApi()
 const product = ref<IProduct | undefined>(undefined)
 const reviews = ref<IReview[]>([])
 const addedToBasketPopup = ref(false)
+
+const popupText = ref('Product added to basket')
 
 const currentImage = ref<number>(0)
 
@@ -74,12 +76,21 @@ async function addToBasket() {
       productId: product.value?.id
     })
     if (response.status === 200) {
+      popupText.value = 'Product added to basket'
       addedToBasketPopup.value = true
       await new Promise(resolve => setTimeout(resolve, 2000))
       addedToBasketPopup.value = false
     }
   } catch (error) {
     console.error(error)
+    if (error instanceof AxiosError) {
+      if (error.status === 401) {
+        popupText.value = 'Not logged in'
+        addedToBasketPopup.value = true
+        await new Promise(resolve => setTimeout(resolve, 2000))
+        addedToBasketPopup.value = false
+      }
+    }
   }
 }
 

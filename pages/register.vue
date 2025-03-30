@@ -3,7 +3,7 @@
     <div class="register-container">
       <h1>Register</h1>
       <span class="error-msg" v-for="msg in errorMessages" v-if="errorMessages">{{ msg }}</span>
-      <form ref="registerForm" @submit.prevent="registerAndSendEmail" class="register-form">
+      <form @submit.prevent="registerAndSendEmail" class="register-form">
         <div class="input-wrapper">
           <input type="text" id="name" required v-model="form.name" />
           <span>Name</span>
@@ -29,9 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { AxiosError } from 'axios'
+import axios, { AxiosError } from 'axios'
 import { ref } from 'vue'
-import emailjs from '@emailjs/browser'
 
 definePageMeta({
   auth: false
@@ -46,8 +45,6 @@ const form = ref({
   email: '',
   password: ''
 })
-
-const registerForm = ref<HTMLFormElement | null>(null)
 
 async function registerAndSendEmail() {
   try {
@@ -69,33 +66,27 @@ async function registerAndSendEmail() {
 }
 
 async function sendEmail() {
-  if (!registerForm.value) return;
-
-  console.log('Form data:', form.value);
-
-  if (!form.value.email) {
-    console.error('Email address is empty. Cannot send email.');
-    return;
-  }
 
   const templateParams = {
-    to_email: form.value.email, 
-    from_name: form.value.name || 'MeShop', 
-    subject: 'Welcome to MeShop',
-    message: `Hello ${form.value.name}, thank you for registering with us!`,
-  };
-
-  try {
-    await emailjs.send(
-      'service_vimtqiv', 
-      'template_6qjjaqg',
-      templateParams,
-      'QAcUKNabYnZoQtlKU' 
-    );
-    console.log('Email sent successfully!');
-  } catch (error) {
-    console.error('Failed to send email:', error);
-  }
+      email: form.value.email, 
+    }
+  
+    try {
+      const response = await axios.post('https://api.emailjs.com/api/v1.0/email/send', {
+        service_id: 'service_vimtqiv',
+        template_id: 'template_6qjjaqg',
+        user_id: 'QAcUKNabYnZoQtlKU',
+        template_params: templateParams,
+        accessToken: 'TinndAG3Ph5Ko7exMyDKb',
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      console.log('Email sent successfully!');
+    } catch (error) {
+      console.error('Failed to send email:', error);
+    }
 }
 </script>
 

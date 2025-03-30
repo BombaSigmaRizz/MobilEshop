@@ -1,6 +1,7 @@
 <template>
   <div class="basket-page">
     <BasketList />
+    <button @click="pay()">Pay</button>
   </div>
 </template>
 
@@ -10,7 +11,12 @@ import type { IProduct } from '~/types/types'
 const api = useApi()
 
 const basket = ref<number[]>([])
-const basketProducts = ref<IProduct[]>([])  
+const basketProducts = ref<IProduct[]>([])
+
+function pay() {
+  // Implement payment logic here
+  console.log('Payment initiated')
+}
 
 onBeforeMount(async () => {
   try {
