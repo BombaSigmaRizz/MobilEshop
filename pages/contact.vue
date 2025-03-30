@@ -102,11 +102,11 @@ async function submitForm() {
 .container {
   font-size: 1.3rem;
   text-align: center;
-  padding: 0rem 1.5rem 5rem 3rem;
+  padding: 6rem 1.5rem 5rem 3rem; 
   color: var(--text);
   position: relative;
-  min-height: 10vh;
-  height: calc(100vh - 3.2rem);
+  min-height: calc(100vh - 3.2rem);
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;  
@@ -150,8 +150,9 @@ async function submitForm() {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 4.8rem;
+  margin-bottom: 0;
   max-width: 70em;
   text-align: center;
 }
@@ -237,6 +238,7 @@ async function submitForm() {
   height: 4rem;
   border-radius: 2rem;
   justify-self: center;
+  margin-top: 2rem;
 }
 
 .contact-btn {
@@ -272,14 +274,65 @@ async function submitForm() {
 }
 
 @media only screen and (max-width: 800px) {
-    .contact-container {
-      flex-direction: column;
-    }
-    .contact-form {
-      order: 1;
-    }
-    .contact-info {
-      order: 2;
-    }
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-info {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .contact-form h2 {
+    font-size: 1.5em;
+  }
+
+  .contact-form .input-wrapper input,
+  .contact-form .input-wrapper textarea {
+    font-size: 1rem;
+  }
+
+  .contact-btn-wrapper {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact-btn {
+    font-size: 1.2em;
+    padding: 0.8rem;
+  }
+
+  .container h1 {
+    font-size: 1.8rem;
+  }
+
+  .container p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .contact-btn {
+    font-size: 1rem;
+  }
+
+  .contact-form h2 {
+    font-size: 1.2em;
+  }
+
+  .contact-form .input-wrapper input,
+  .contact-form .input-wrapper textarea {
+    font-size: 0.9rem;
+  }
 }
 </style>
