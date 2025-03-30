@@ -6,20 +6,60 @@
       <h3>Account details:</h3><br><br>
       <p>Name: {{ auth.user?.name }}</p><br>
       <p>Email: {{ auth.user?.email }}</p>
-      </div>
+    </div>
     <button @click="auth.logout(); navigateTo('/')" class="logout-btn">Log out</button>
+    <div class ="hidden">
+      <div ref="logout-img" class="logout-img"></div>
+    </div>  
   </div>
 </template>
 
 <script setup lang="ts">
-const auth = useAuthStore() 
-const router = useRouter()
+import { onMounted } from 'vue';
+
+const auth = useAuthStore();
+const router = useRouter();
+
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    const hiddenElements = document.querySelectorAll('.hidden');
+    setTimeout(() => {
+      hiddenElements.forEach((el) => el.classList.add('show'));
+    }, 100);
+  }
+});
 </script>
 
 <style scoped lang="scss">
-.account-info{
+.hidden {
+  opacity: 0;
+  filter: blur(20px);
+  transform: translateY(-35rem);
+  transition: all 3s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
+}
+
+.logout-img {
+  background-image: url('../assets/img/page/logout.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 0.8rem;
+  top: -29rem;
+  width: 80vh;
+  height: 80vh;
+  opacity: 70%;
+  rotate: -2deg;
+}
+
+.account-info {
   color: var(--text);
-  padding-left: 2.5rem;
+  padding-left: 3rem;
 }
 
 h1 {
@@ -36,13 +76,14 @@ h2 {
 }
 
 h3 {
-  font-size: 2.5rem;
-  padding-top: 6rem;
+  font-size: 2.4rem;
+  padding-top: 7rem;
+  padding-bottom: 2.7rem;
 }
 
 .logout-btn {
   position: absolute;
-  top: 50rem;
+  top: 49.5rem;
   left: 2.5rem;
   background: rgb(114, 8, 236);
   box-shadow: 0 0 95px rgb(114, 8, 236);
