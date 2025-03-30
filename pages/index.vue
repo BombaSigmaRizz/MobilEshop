@@ -299,7 +299,7 @@ section {
     rgb(0 0 0 / 1),
     rgb(0 0 0 / 0.06)
   );
-  rotate: -3deg;
+  rotate: -4deg;
   width: 115vh;
   height: 115vh;
   background-repeat: no-repeat;
