@@ -333,4 +333,12 @@ section {
   }
 
 }
+
+@media (max-width: 768px) {
+    .hidden {
+        transform: none !important;
+        opacity: 1 !important;
+        transition: none !important;
+    }
+}
 </style>

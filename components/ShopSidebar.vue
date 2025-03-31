@@ -61,7 +61,10 @@ const isAdmin = computed(() => auth.user?.isAdmin)
   flex-direction: column;
   gap: 0.5rem;
   margin: 1rem 0;
+  margin-top: 3rem;
+  align-self: flex-start;
 }
+
 select {
   text-align: left;
   appearance: none;
@@ -146,6 +149,7 @@ select {
   align-items: center;
   width: 100%;
   padding: 1rem;
+  gap: 1.5rem;
 }
 
 .search-bar {
