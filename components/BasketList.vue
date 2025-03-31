@@ -44,7 +44,7 @@ onBeforeMount(async () => {
 <style scoped lang="scss">
 .basket-list-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-auto-rows: clamp(8vh, 8rem, 80vh);
   gap: 1.5rem;
   padding: 2rem; 
