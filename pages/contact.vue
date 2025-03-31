@@ -286,11 +286,12 @@ async function submitForm() {
   }
 
   .contact-form {
-    width: 100%;
+    width: 90%;
+    padding: 1rem;
   }
 
   .contact-form h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 
   .contact-form .input-wrapper input,
@@ -320,6 +321,11 @@ async function submitForm() {
 @media only screen and (max-width: 500px) {
   .container {
     padding: 1rem;
+  }
+
+  .contact-form {
+    width: 100%;
+    padding: 0.5rem;
   }
 
   .contact-btn {
