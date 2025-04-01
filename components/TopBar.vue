@@ -140,7 +140,7 @@ async function hideShopDropdown() {
 
 @media (max-width: 768px) {
   .topbar {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   
 }

@@ -46,7 +46,7 @@ onBeforeMount(async () => {
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   grid-auto-rows: clamp(8vh, 8rem, 80vh);
   gap: 1.5rem;
-  padding: 2rem; 
+  padding: 2rem;
   background: var(--bg0);
   height: 100%;
   box-sizing: border-box;
