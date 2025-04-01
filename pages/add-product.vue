@@ -128,6 +128,16 @@ async function addProduct() {
     }
   })
   console.log(response)
+
+  form.value.name = ''
+  form.value.description = ''
+  form.value.price = 0
+  form.value.discountPrice = -1
+  form.value.brand = EBrandTags.Iphone
+  form.value.storage = EStorageTags.GB128
+  form.value.color = EColorTags.Black
+  showcaseFile.value = null
+  catalogFiles.value = null
 }
 </script>
 

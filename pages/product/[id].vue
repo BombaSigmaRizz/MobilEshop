@@ -57,6 +57,13 @@ async function addReview() {
   if (!name || !content || !rating) return
 
   try {
+    const response = await api.post<IReview>(`/products/${route.params.id}/reviews`, {
+      name: name.value,
+      productId: route.params.id,
+      content: content.value,
+      rating: rating.value
+    })
+
     await api.get<IReview[]>(`/products/${route.params.id}/reviews`)
     name.value = ''
     content.value = ''
