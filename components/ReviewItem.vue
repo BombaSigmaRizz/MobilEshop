@@ -23,5 +23,7 @@ const props = defineProps<{
   background-color: var(--bg1);
   width: 30rem;
   min-height: 8rem;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 </style>

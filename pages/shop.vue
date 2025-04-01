@@ -27,4 +27,10 @@ onMounted(async () => {
   height: 100%;
   padding-left: 16rem;
 }
+
+@media (max-width: 768px) {
+    .shop-container {
+      padding-left: 10rem;
+    }
+}
 </style>
