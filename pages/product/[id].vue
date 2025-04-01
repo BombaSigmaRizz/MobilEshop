@@ -144,7 +144,7 @@ definePageMeta({
 .price {
   position: absolute;
   bottom: 4.4rem;
-  right: 16rem;
+  right: 17rem;
 }
 
 .discount-price {
