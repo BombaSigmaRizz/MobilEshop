@@ -14,7 +14,7 @@
         <span class="storage">Storage Amount: {{ product?.storage }}</span>
       </div>
       <span class="price">{{ product?.price }}€</span>
-      <button class="add-to-basket" @click="addToBasket"><span>Add to basket</span></button>
+      <button class="add-to-basket" @click="addToBasket()"><span>Add to basket</span></button>
     </div>
     <div class="reviews">
       <h1>Reviews</h1>
@@ -211,6 +211,7 @@ definePageMeta({
   overflow: hidden;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 
   &::before {
     content: '';
