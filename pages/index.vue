@@ -1,4 +1,4 @@
-<template>
+<template>a
   <div class="home" ref="home">
     <section ref="sec0" class="intro">
       <div class="slogan-shop">
