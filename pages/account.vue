@@ -49,10 +49,10 @@ onMounted(() => {
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
-  right: 0.8rem;
-  top: -29rem;
-  width: 80vh;
-  height: 80vh;
+  right: 2rem;
+  top: -27rem;
+  width: 75vh;
+  height: 75vh;
   opacity: 70%;
   rotate: -2deg;
 }
@@ -83,7 +83,7 @@ h3 {
 
 .logout-btn {
   position: absolute;
-  top: 49.5rem;
+  bottom: 3.5rem;
   left: 2.5rem;
   background: rgb(114, 8, 236);
   box-shadow: 0 0 95px rgb(114, 8, 236);
@@ -104,5 +104,21 @@ h3 {
               0 0 25px rgb(114, 8, 236),
               0 0 50px rgb(114, 8, 236),
               0 0 100px rgb(114, 8, 236);
+}
+
+@media (max-width: 768px) {
+    .hidden {
+        transform: none !important;
+        opacity: 0 !important;
+        transition: none !important;
+    }
+
+    .logout-btn {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 18px;
+    }
 }
 </style>

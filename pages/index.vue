@@ -287,7 +287,7 @@ section {
   background-size: contain;
   position: absolute;
   left: 5.15rem;
-  top: -7.38rem;
+  top: -7.71rem;
   opacity: 62%;
 }
 
@@ -337,8 +337,20 @@ section {
 @media (max-width: 768px) {
     .hidden {
         transform: none !important;
-        opacity: 1 !important;
+        opacity: 100% !important;
         transition: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .best-prices-img {
+        opacity: 15%;
+    }
+    .fast-deliveries-img {
+        opacity: 15%;
+    }
+    .non-existent-img {
+        opacity: 15%;
     }
 }
 </style>

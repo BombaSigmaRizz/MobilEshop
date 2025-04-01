@@ -30,7 +30,7 @@
           <option :value="EColorTags.White">{{ EColorTags.White }}</option>
           <option :value="EColorTags.Yellow">{{ EColorTags.Yellow }}</option>
         </select>
-        <span>Storage:</span>
+        <span>Storage space:</span>
         <select class="search-tag-storage" v-model="data.filterStorage">
           <option value="">All</option>
           <option :value="EStorageTags.GB128">{{ EStorageTags.GB128 }}</option>
