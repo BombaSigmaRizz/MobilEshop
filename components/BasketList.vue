@@ -29,7 +29,6 @@ async function updateList() {
 onBeforeMount(async () => {
   try {
     basket.value = await api.get<number[]>('/basket')
-
     const productPromises = basket.value.map(async (productId) => {
       return await api.get<IProduct>(`/products/${productId}`)
     })
