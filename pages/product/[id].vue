@@ -1,6 +1,6 @@
 <template>
   <div class="product-page">
-    <TempPopup v-if="addedToBasketPopup">{{ popupText }}</TempPopup>
+    <TempPopup v-if="showPopup">{{ popupText }}</TempPopup>
     <div class="product-showcase">
       <div class="product-image-wrapper">
         <img v-if="product" :src="`/api/uploads/${product.catalogImages[currentImage]}`" alt="image" />
@@ -13,7 +13,8 @@
         <span class="color">Color: {{ product?.color }}</span>
         <span class="storage">Storage Amount: {{ product?.storage }}</span>
       </div>
-      <span class="price">{{ product?.price }}€</span>
+      <span class="price" :class="{'crossed': product && product.discountPrice > -1}">{{ product?.price }}€</span>
+      <span v-if="product && product.discountPrice > -1" class="discount-price">{{ product?.discountPrice }}€</span>
       <button class="add-to-basket" @click="addToBasket()"><span>Add to basket</span></button>
     </div>
     <div class="reviews">
@@ -42,7 +43,7 @@ const api = useApi()
 
 const product = ref<IProduct | undefined>(undefined)
 const reviews = ref<IReview[]>([])
-const addedToBasketPopup = ref(false)
+const showPopup = ref(false)
 
 const popupText = ref('Product added to basket')
 
@@ -77,18 +78,18 @@ async function addToBasket() {
     })
     if (response.message) {
       popupText.value = 'Product added to basket'
-      addedToBasketPopup.value = true
+      showPopup.value = true
       await new Promise(resolve => setTimeout(resolve, 2000))
-      addedToBasketPopup.value = false
+      showPopup.value = false
     }
   } catch (error) {
     console.error(error)
     if (error instanceof AxiosError) {
       if (error.status === 401) {
         popupText.value = 'Not logged in'
-        addedToBasketPopup.value = true
+        showPopup.value = true
         await new Promise(resolve => setTimeout(resolve, 2000))
-        addedToBasketPopup.value = false
+        showPopup.value = false
       }
     }
   }
@@ -146,7 +147,17 @@ definePageMeta({
 .price {
   position: absolute;
   bottom: 4.4rem;
+  right: 16rem;
+}
+
+.discount-price {
+  position: absolute;
+  bottom: 4.4rem;
   right: 14rem;
+}
+
+.crossed {
+  text-decoration: line-through;
 }
 
 .product-image-wrapper {
