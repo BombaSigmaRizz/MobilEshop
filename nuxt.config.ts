@@ -22,7 +22,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       api: {
-        url: 'http://localhost:3333'
+        // url: 'http://localhost:3333',
+        url: '167.172.110.64:3000'
       }
     }
   },
