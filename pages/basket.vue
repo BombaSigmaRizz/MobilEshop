@@ -2,6 +2,7 @@
   <div class="basket-page">
     <div class="left">
       <BasketList />
+      <span class="empty" v-if="!basketProducts.length">Basket is empty</span>
       <button class="pay-button" v-if="basketProducts.length" @click="pay()">Pay</button>
     </div>
     <div class="right">
@@ -47,6 +48,15 @@ onBeforeMount(async () => {
 </script>
 
 <style scoped lang="scss">
+.empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: var(--text);
+  text-align: center;
+}
 .basket-page {
   display: flex;
   width: 100%;
