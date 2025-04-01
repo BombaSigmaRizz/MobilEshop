@@ -1,7 +1,7 @@
 <template>
   <div class="basket-item-container">
     <img :src="`/api/uploads/${product.showcaseImage}`" width="600" height="600" alt="img" />
-    <span class="info">{{ product.name }} - {{ product.price }}€</span>
+    <span class="info">{{ product.name }} - {{ product.discountPrice > -1 ? product.discountPrice : product.price }}€</span>
     <button class="remove-item" @click="removeItem">❌</button>
   </div>
 </template>
