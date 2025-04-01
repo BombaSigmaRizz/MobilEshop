@@ -2,7 +2,7 @@
   <div class="basket-page">
     <div class="left">
       <BasketList />
-      <button class="pay-button" @click="pay()">Pay</button>
+      <button class="pay-button" v-if="basketProducts.length" @click="pay()">Pay</button>
     </div>
     <div class="right">
       <div class="checkout"></div>
@@ -12,8 +12,11 @@
 
 <script lang="ts" setup>
 import { loadStripe } from '@stripe/stripe-js'
+import type { IProduct } from '~/types/types'
 
 const api = useApi()
+const basket = ref<number[]>([])
+const basketProducts = ref<IProduct[]>([])
 
 async function pay() {
   const stripe = await loadStripe('pk_live_51R5VZsG83xrSH3832sVqKG3e9qWzhLVel9KG08lzS8FEmDWtsYE0cMgFWfMMdn3x97ceGWnBDjzu0F2WXRv19wyE00KzdEmhoy', {
@@ -28,6 +31,19 @@ async function pay() {
   const checkout = await stripe.initEmbeddedCheckout({ fetchClientSecret: clientSecret })
   checkout.mount('.checkout')
 }
+
+onBeforeMount(async () => {
+  try {
+    basket.value = await api.get<number[]>('/basket')
+    const productPromises = basket.value.map(async (productId) => {
+      return await api.get<IProduct>(`/products/${productId}`)
+    })
+
+    basketProducts.value = await Promise.all(productPromises)
+  } catch (error) {
+    console.error(error)
+  }
+})
 </script>
 
 <style scoped lang="scss">
