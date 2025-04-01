@@ -127,9 +127,9 @@ definePageMeta({
   flex-direction: column;
   justify-content: center;
   // align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
   width: 50%;
-  padding: 2rem;
+  padding-left: 2rem;
   color: var(--text);
   word-break: break-all;
 }
@@ -138,7 +138,7 @@ definePageMeta({
   font-size: 2rem;
   font-weight: 700;
   text-align: left;
-  margin-bottom: 2rem;
+  margin-bottom: 8rem;
 }
 
 .price {
