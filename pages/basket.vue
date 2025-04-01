@@ -46,4 +46,29 @@ async function pay() {
   width: 50%;
   height: 100%;
 }
+
+.pay-button {
+  position: relative;
+  top: -1.2rem;
+  left: 2.1rem;
+  background: rgb(114, 8, 236);
+  box-shadow: 0 0 95px rgb(114, 8, 236);
+  padding: 0.6rem 2rem;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 2rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 1s;
+  transition-property: box-shadow;
+}
+
+.pay-button:hover {
+  box-shadow: 0 0 5px rgb(114, 8, 236),
+              0 0 25px rgb(114, 8, 236),
+              0 0 50px rgb(114, 8, 236),
+              0 0 100px rgb(114, 8, 236);
+}
 </style>
