@@ -57,14 +57,10 @@ async function addReview() {
   if (!name || !content || !rating) return
 
   try {
-    const response = await api.post<IReview>(`/products/${route.params.id}/reviews`, {
-      name: name.value,
-      productId: route.params.id,
-      content: content.value,
-      rating: rating.value
-    })
-
-    reviews.value = await api.get<IReview[]>(`/products/${route.params.id}/reviews`)
+    await api.get<IReview[]>(`/products/${route.params.id}/reviews`)
+    name.value = ''
+    content.value = ''
+    rating.value = 0
   }
   catch (error) {
     console.error(error)
@@ -136,6 +132,7 @@ definePageMeta({
   padding-left: 2rem;
   padding-right: 1rem;
   color: var(--text);
+  word-break: break-all;
 }
 
 .name {
@@ -148,7 +145,7 @@ definePageMeta({
 .price {
   position: absolute;
   bottom: 4.4rem;
-  right: 16rem;
+  right: 17rem;
 }
 
 .discount-price {
