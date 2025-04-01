@@ -22,7 +22,7 @@ const basketProducts = ref<IProduct[]>([])
 async function pay() {
   // Implement payment logic here
   console.log('Payment initiated')
-  const stripe = await loadStripe('pk_test_51R5VZsG83xrSH383cpgNIkKNSJQk0z9hcki94hCF8Q4t0RaFFDSaODdpFH11ExRHPY2q7D6RihWQIX4lnmTcs04v00nhvavFIr', {
+  const stripe = await loadStripe('pk_live_51R5VZsG83xrSH3832sVqKG3e9qWzhLVel9KG08lzS8FEmDWtsYE0cMgFWfMMdn3x97ceGWnBDjzu0F2WXRv19wyE00KzdEmhoy', {
     betas: ['custom_checkout_beta_6'],
   })
 
