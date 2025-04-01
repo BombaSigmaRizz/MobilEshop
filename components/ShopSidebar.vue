@@ -178,4 +178,20 @@ select {
   margin: 1rem 0;
   width: 10rem;
 }
+
+@media (max-width: 768px) {
+  .shop-sidebar {
+    width: 10rem;
+  }
+
+  .search-bar {
+    &:focus, &:not(:placeholder-shown) {
+      width: 8rem;
+    }
+  }
+
+  select {
+    width: 8rem;
+  }
+}
 </style>

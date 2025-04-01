@@ -19,7 +19,6 @@
     </div>
     <div class="reviews">
       <h1>Reviews</h1>
-      <ReviewList v-if="product" :productId="product.id" />
       <div class="add-review">
         <form @submit.prevent="addReview">
           <div>
@@ -31,6 +30,7 @@
           <button type="submit">Add review</button>
         </form>
       </div>
+      <ReviewList v-if="product" :productId="product.id" />
     </div>
   </div>
 </template>
@@ -259,8 +259,12 @@ definePageMeta({
 }
 
 .reviews {
+  padding: 2rem;
   margin-top: 2rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .reviews h1 {
@@ -275,15 +279,14 @@ definePageMeta({
 }
 
 .add-review {
-  margin-top: 2rem;
+  margin-bottom: 5rem;
+  width: 35rem;
 }
 
 .add-review form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  width: 35%;
-  translate: 90%;
 }
 
 .add-review input {

@@ -137,4 +137,11 @@ async function hideShopDropdown() {
   border-bottom: 2px solid white;
   transition: 0.2s;
 }
+
+@media (max-width: 768px) {
+  .topbar {
+    font-size: 0.8rem;
+  }
+  
+}
 </style>

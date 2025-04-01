@@ -1,6 +1,6 @@
 <template>
   <div class="review-list-container">
-    <span class="avg-rating">Average Rating: {{ avgRating }}/5</span>
+    <span class="avg-rating">Average Rating: {{ avgRating.toFixed(1) }}/5</span>
     <ReviewItem :name="review.name" :content="review.content" :rating="review.rating" v-for="review in reviewList" :key="review.id"/>
   </div>
 </template>
