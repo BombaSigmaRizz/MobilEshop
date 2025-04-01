@@ -72,10 +72,10 @@ async function addReview() {
 
 async function addToBasket() {
   try {
-    const response: AxiosResponse = await api.post(`/basket`, {
+    const response = await api.post(`/basket`, {
       productId: product.value?.id
     })
-    if (response.status === 200) {
+    if (response.message) {
       popupText.value = 'Product added to basket'
       addedToBasketPopup.value = true
       await new Promise(resolve => setTimeout(resolve, 2000))
