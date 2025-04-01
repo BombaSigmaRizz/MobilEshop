@@ -140,7 +140,7 @@ onMounted( async () => {
   height: fit-content;
   background: var(--bg0);
   transition: all 0.4s ease;
-  color: var(--text);
+  color: var(--text); //ked tak zmenit
   overflow: hidden;
 }
 

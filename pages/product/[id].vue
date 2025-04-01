@@ -137,7 +137,7 @@ definePageMeta({
   gap: 0.9rem;
   width: 50%;
   padding-left: 2rem;
-  padding-right: 1rem;
+  padding-right: 2rem;
   color: var(--text);
   word-break: break-all;
 }
