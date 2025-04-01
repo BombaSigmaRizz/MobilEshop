@@ -2,7 +2,7 @@
   <div class="basket-page">
     <div class="left">
       <BasketList />
-      <button @click="pay()">Pay</button>
+      <button class="pay-button" @click="pay()">Pay</button>
     </div>
     <div class="right">
       <div class="checkout"></div>

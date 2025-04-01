@@ -124,7 +124,7 @@ async function submitForm() {
 }
 
 .container h1 {
-  padding-top: 4rem;
+  padding-top: 2.8rem;
   font-weight: 600;
 
 }
