@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     public: {
       api: {
         // url: 'http://localhost:3333',
-        url: '167.172.110.64:3000'
+        url: 'http://167.172.110.64:3001'
       }
     }
   },
